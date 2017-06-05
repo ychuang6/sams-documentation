@@ -23,6 +23,7 @@ Contents:
    installation
    settingtemplate
    pipeline
+   chtcwork
    authors
    license
    help

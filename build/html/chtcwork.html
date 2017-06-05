@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cluster Computing Workflow &mdash; samspipeline 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Authors" href="authors.html"/>
+        <link rel="prev" title="Basic Workflow" href="pipeline.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> samspipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cluster Computing Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-map">Workflow Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-component">Important Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submit-file">Submit File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">samspipeline</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Cluster Computing Workflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/chtcwork.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cluster-computing-workflow">
+<h1>Cluster Computing Workflow<a class="headerlink" href="#cluster-computing-workflow" title="Permalink to this headline">¶</a></h1>
+<p>The VTLab uses resources from the Center of High Throughput Computing (CHTC) here in University of Wisconsin-Madison to execute the automatic segmentation and compositing step of the pipeline. Due to the multiple template-based CT image registration design of this portion of the pipeline, a parallel computing environment provides more computing resources to complete multiple registration in the same time frame. This is, however, not limited to the environment described here.</p>
+<p>The pipeline is integrated to work with HTCondor scheduler on remote clusters with higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources. It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user.</p>
+<p>For more information regarding HTCondor, refer to the <a class="reference external" href="http://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a>.</p>
+<div class="section" id="workflow-map">
+<h2>Workflow Map<a class="headerlink" href="#workflow-map" title="Permalink to this headline">¶</a></h2>
+<p>The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the <a class="reference external" href="http://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html">DAGMan Documentation</a> in the HTCondor manual for detailed information.</p>
+<p>&lt;insert workflow Map&gt;</p>
+</div>
+<div class="section" id="important-component">
+<h2>Important Component<a class="headerlink" href="#important-component" title="Permalink to this headline">¶</a></h2>
+<p>SPLICE
+DAG
+Submit File
+Scripts</p>
+<div class="section" id="submit-file">
+<h3>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h3>
+<p>HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file will specify the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
+The SAMS Pipeline will consists of two main submit file:
+1) SAMS.sub - A submit file for <em>Registration</em> Job
+2) Average.sub - A submit file for <em>Compositing</em> Job</p>
+<p>SAMS.sub:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+getenv=True
+environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
+executable=/home/&lt;user&gt;/sams/mandible.wrapper.chtc.sh
+should_transfer_files=YES
+when_to_transfer_output=ON_EXIT
+request_cpus=1
+request_memory=$(memory)
+request_disk=6G
+
+requirements = (HasGluster == true)
+periodic_release=((JobStatus==5)&amp;&amp;((CurrentTime - EnteredCurrentStatus)&gt;360))
+
+transfer_input_files=$(studyDir)/sams/mandible.register.chtc.sh,$(studyDir)/bin/c3d,$(test_dicom),$(test_model),$(refImg),$(refMod),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz,&lt;location&gt;/ants-chtc-built.tgz
+
+arguments=&quot;$(now) $(test_name) $(refName) $(Cluster) $(useModel)&quot;
+log=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).log
+output=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).out
+error=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).err
+notification=Error
+notify_user=&lt;user@email.com&gt;
+stream_output=True
+
+queue
+</pre></div>
+</div>
+<p>Average.sub:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+getenv=True
+environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
+executable=/home/&lt;user&gt;/sams/average.wrapall.chtc.sh
+should_transfer_files=YES
+when_to_transfer_output=ON_EXIT
+request_cpus=1
+request_memory=10000
+request_disk=8G
+requirements = (HasGluster == true)
+
+transfer_input_files=$(studyDir)/sams/average.weighted-averaging.chtc.sh,$(studyDir)/sams/mandible.unpack-output.sh,$(studyDir)/bin/c3d,&lt;location&gt;/$(test_name)/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
+
+arguments=&quot;$(now) $(test_name) $(dir_name) $(Cluster) $(comp)&quot;
+log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
+output=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).out
+error=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).err
+notification=Error
+notify_user=&lt;user@email.com&gt;
+stream_output=True
+
+queue
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="authors.html" class="btn btn-neutral float-right" title="Authors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pipeline.html" class="btn btn-neutral" title="Basic Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Vocal Tract Development Lab.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
