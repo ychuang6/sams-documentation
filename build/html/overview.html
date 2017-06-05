@@ -94,12 +94,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flowchart">Flowchart</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chtcwork.html">Cluster Computing Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
@@ -172,7 +173,7 @@
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>This semi-automated segmentation pipeline uses image registration to compare an unknown case (referred to as a <em>test</em> <em>scan</em> in this documentation, see Figure 1 for flowchart), with a set of previously-segmented CT images and their respective 3D mandible models (this dataset is referred to as <em>reference templates</em> for this documentation). This process is then used to infer the location of the mandibular region on the <em>test scan</em>.</p>
-<p>This pipeline is developed with mainly open-source software aside from Analyze 12.0 (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation.</p>
+<p>This pipeline is developed with mainly open-source software aside from <a class="reference external" href="http://analyzedirect.com">Analyze 12.0</a> (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation.</p>
 <p>FSL (FMRIB Software Library) and Advance Normalization Tools (ANTs) are used for thresholding, trimming, and image registration. ITK-SNAP&#8217;s Convert3D(C3D) tool is used to convert output into binary form. AFNI (Analysis of Functional NeuroImages) is used for post-processing padding and file conversion as needed. MATLAB is used for inspection of the segmented mandibles. See Installation page for links, alternatives and other information.</p>
 <p>This pipeline consists of three major steps: 1) Pre-processing, 2) Automatic Segmentation and Compositing, and 3) Post-processing. The pipeline is semi-automated where step 1 and step 3 are processed manually.</p>
 <p>In summary, an input CT series stored in Digital Imaging and Communications in Medicine (DICOM) format is first converted into Analyze-compatible 3D format for user to determine a threshold in Hounsfield Unit (HU) that will remove all non-osseous tissues from the CT image (<em>test scan</em>). Then user will determine the minimal enclosing box that contains the whole mandible in the <em>test scan</em>. The input <em>test scan</em> is then processed through the pipeline to be thresholded and cropped based on input user values. The pre-processed <em>test scan</em> is then sent to cluster computing to be registered against multiple <em>reference templates</em>. Once the mathematical transformation between the <em>test scan</em> and each references is established, the inverse transformation is applied to the known reference&#8217;s 3D mandible models (<em>template model</em>) to yield predictive mandible model for the <em>test scan</em>. These resulting &#8220;segmented 3D mandibles&#8221; are then compiled and averaged to produce a final model. This final model is then rendered in 3D for visual inspection. Mandibles with regions requiring correction/enhancement will be converted back into Analyze format for manual editing in Analyze 12.0 (see Installation page for software options).</p>
@@ -180,6 +181,9 @@
 <div class="section" id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
 <p>The dataset used to design this pipeline and used as the <em>reference templates</em> were collected retrospectively following University of Wisconsin-Madison Institutional Review Board (IRB) approval (IRB number: 2011-0036 and 2016-1052).</p>
+</div>
+<div class="section" id="flowchart">
+<h2>Flowchart<a class="headerlink" href="#flowchart" title="Permalink to this headline">¶</a></h2>
 <p>Figure 1: Flowchart of the SAMS Pipeline</p>
 <img alt="_images/samsflowchartmain.jpg" src="_images/samsflowchartmain.jpg" />
 </div>

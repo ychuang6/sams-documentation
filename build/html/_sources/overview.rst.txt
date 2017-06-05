@@ -7,7 +7,7 @@ Background
 ~~~~~~~~~~
 This semi-automated segmentation pipeline uses image registration to compare an unknown case (referred to as a *test* *scan* in this documentation, see Figure 1 for flowchart), with a set of previously-segmented CT images and their respective 3D mandible models (this dataset is referred to as *reference templates* for this documentation). This process is then used to infer the location of the mandibular region on the *test scan*. 
 
-This pipeline is developed with mainly open-source software aside from Analyze 12.0 (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation. 
+This pipeline is developed with mainly open-source software aside from `Analyze 12.0 <http://analyzedirect.com>`_ (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation. 
 
 FSL (FMRIB Software Library) and Advance Normalization Tools (ANTs) are used for thresholding, trimming, and image registration. ITK-SNAP's Convert3D(C3D) tool is used to convert output into binary form. AFNI (Analysis of Functional NeuroImages) is used for post-processing padding and file conversion as needed. MATLAB is used for inspection of the segmented mandibles. See Installation page for links, alternatives and other information.
 
@@ -19,6 +19,8 @@ Dataset
 ~~~~~~~
 The dataset used to design this pipeline and used as the *reference templates* were collected retrospectively following University of Wisconsin-Madison Institutional Review Board (IRB) approval (IRB number: 2011-0036 and 2016-1052).
 
+Flowchart
+~~~~~~~~~
 Figure 1: Flowchart of the SAMS Pipeline
 
 .. image:: images/samsflowchartmain.jpg

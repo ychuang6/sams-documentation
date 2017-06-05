@@ -23,7 +23,7 @@ Contents:
    installation
    settingtemplate
    pipeline
-   chtcwork
+   chtc
    authors
    license
    help
@@ -35,3 +35,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

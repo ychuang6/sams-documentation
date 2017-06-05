@@ -12,15 +12,12 @@ The registration and compositing commands described in the Basic Workflow sectio
 
 <insert workflow Map>
 
-
-Important Component
-~~~~~~~~~~~~~~~~~~~
+Important Components
+~~~~~~~~~~~~~~~~~~~~
 SPLICE
 DAG
 Submit File
 Scripts
-
-
 
 
 Submit File
@@ -82,5 +79,7 @@ Average.sub::
 
 	queue
 
+
+<InProgress>
 
  
