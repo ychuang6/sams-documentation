@@ -5,11 +5,11 @@ The VTLab uses resources from the Center of High Throughput Computing (CHTC) her
 
 The pipeline is integrated to work with HTCondor scheduler on remote clusters with higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources. It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user. 
 
-For more information regarding HTCondor, refer to the `HTCondor Manual <http://research.cs.wisc.edu/htcondor/manual>`_.  
+For more information regarding HTCondor, refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_.  
 
 Workflow Map
 ------------
-The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the `DAGMan Documentation <http://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html>`_ in the HTCondor manual for detailed information. 
+The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the `DAGMan Documentation <https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html>`_ in the HTCondor manual for detailed information. 
 
 <insert workflow Map>
 
@@ -33,7 +33,7 @@ SAMS.sub ::
 	universe=vanilla
 	getenv=True
 	environment="ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1"
-	executable=/home/<user>/sams/mandible.wrapper.chtc.sh
+	executable=<location>/mandible.wrapper.chtc.sh
 	should_transfer_files=YES
 	when_to_transfer_output=ON_EXIT
 	request_cpus=1
@@ -61,7 +61,7 @@ Average.sub ::
 	universe=vanilla
 	getenv=True
 	environment="ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1"
-	executable=/home/<user>/sams/average.wrapall.chtc.sh
+	executable=<location>/average.wrapall.chtc.sh
 	should_transfer_files=YES
 	when_to_transfer_output=ON_EXIT
 	request_cpus=1
@@ -85,5 +85,6 @@ Average.sub ::
 InProgress
 ----------
 *This Section is still in progress*
+
 
 
