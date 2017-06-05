@@ -28,7 +28,7 @@ The SAMS Pipeline will consists of two main submit file:
 1) SAMS.sub - A submit file for *Registration* Job
 2) Average.sub - A submit file for *Compositing* Job
 
-SAMS.sub::
+SAMS.sub ::
 
 	universe=vanilla
 	getenv=True
@@ -55,7 +55,8 @@ SAMS.sub::
 
 	queue 
 
-Average.sub::
+
+Average.sub ::
 
 	universe=vanilla
 	getenv=True
@@ -82,7 +83,7 @@ Average.sub::
 
 
 InProgress
-~~~~~~~~~~
+----------
 *This Section is still in progress*
 
 
