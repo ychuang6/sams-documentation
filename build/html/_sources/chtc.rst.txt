@@ -13,36 +13,45 @@ The registration and compositing commands described in the Basic Workflow sectio
 
 <insert workflow Map>
 
-Important Components
---------------------
-Terminology: 
+Important Terminology
+---------------------
+The list of terminology provided below are brief snippet of their actual and potential function. Please refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanation. 
 
-JOB : The *JOB* keyword specifies a job to be managed by Condor. ::
-	JOB *JobName SubmitFileName* 
+**JOB** 
+The *JOB* keyword specifies a job to be managed by Condor. ::
 
-PARENT ... CHILD :  The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::
-	PARENT ParentJobName... CHILD ChildJobName... 
+   JOB JobName SubmitFileName 
 
-DAG : Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information. 
+**PARENT ... CHILD**
+The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::
+
+   PARENT ParentJobName... CHILD ChildJobName... 
+
+**DAG**
+Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information. 
 A DAG file will be executed by running *condor_submit_dag* <dagfilename>.dag
 
 A very simple DAG input file is ::
-	JOB A A.sub
-	JOB B B.sub
-	JOB C C.sub
-	JOB D D.sub
-	PARENT A CHILD B C
-	PARENT B C CHILD D
+
+   JOB A A.sub
+   JOB B B.sub
+   JOB C C.sub
+   JOB D D.sub
+   PARENT A CHILD B C
+   PARENT B C CHILD D
 
 
-SPLICE : A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::
-	SPLICE *SpliceName* DAGFileName [DIR directory]
+**SPLICE** 
+A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies.::
+
+   SPLICE SpliceName DAGFileName [DIR directory]
 
 A simple DAG spliced input file is ::
-	SPLICE file1 dagFile1.dag
-	SPLICE file2 dagFile2.dag
-	...
-	SPLICE file5 dagFile5.dag
+
+   SPLICE file1 dagFile1.dag
+   SPLICE file2 dagFile2.dag
+   ...
+   SPLICE file5 dagFile5.dag
 
 
 

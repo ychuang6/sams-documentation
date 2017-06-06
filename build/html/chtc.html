@@ -97,7 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cluster Computing Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#workflow-map">Workflow Map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-components">Important Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-terminology">Important Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inprogress">InProgress</a></li>
 </ul>
 </li>
@@ -178,33 +178,43 @@
 <p>The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html">DAGMan Documentation</a> in the HTCondor manual for detailed information.</p>
 <p>&lt;insert workflow Map&gt;</p>
 </div>
-<div class="section" id="important-components">
-<h2>Important Components<a class="headerlink" href="#important-components" title="Permalink to this headline">¶</a></h2>
-<p>Terminology:</p>
-<dl class="docutils">
-<dt>JOB <span class="classifier-delimiter">:</span> <span class="classifier">The <em>JOB</em> keyword specifies a job to be managed by Condor. ::</span></dt>
-<dd>JOB <em>JobName SubmitFileName</em></dd>
-<dt>PARENT ... CHILD <span class="classifier-delimiter">:</span> <span class="classifier">The <em>PARENT</em> and <em>CHILD</em> keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::</span></dt>
-<dd>PARENT ParentJobName... CHILD ChildJobName...</dd>
-</dl>
-<p>DAG : Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information.
+<div class="section" id="important-terminology">
+<h2>Important Terminology<a class="headerlink" href="#important-terminology" title="Permalink to this headline">¶</a></h2>
+<p>The list of terminology provided below are brief snippet of their actual and potential function. Please refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a> for detailed explanation.</p>
+<p><strong>JOB</strong>
+The <em>JOB</em> keyword specifies a job to be managed by Condor.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">JobName</span> <span class="n">SubmitFileName</span>
+</pre></div>
+</div>
+<p><strong>PARENT ... CHILD</strong>
+The <em>PARENT</em> and <em>CHILD</em> keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PARENT</span> <span class="n">ParentJobName</span><span class="o">...</span> <span class="n">CHILD</span> <span class="n">ChildJobName</span><span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>DAG</strong>
+Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information.
 A DAG file will be executed by running <em>condor_submit_dag</em> &lt;dagfilename&gt;.dag</p>
-<dl class="docutils">
-<dt>A very simple DAG input file is ::</dt>
-<dd>JOB A A.sub
-JOB B B.sub
-JOB C C.sub
-JOB D D.sub
-PARENT A CHILD B C
-PARENT B C CHILD D</dd>
-<dt>SPLICE <span class="classifier-delimiter">:</span> <span class="classifier">A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::</span></dt>
-<dd>SPLICE <em>SpliceName</em> DAGFileName [DIR directory]</dd>
-<dt>A simple DAG spliced input file is ::</dt>
-<dd>SPLICE file1 dagFile1.dag
-SPLICE file2 dagFile2.dag
-...
-SPLICE file5 dagFile5.dag</dd>
-</dl>
+<p>A very simple DAG input file is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">A</span> <span class="n">A</span><span class="o">.</span><span class="n">sub</span>
+<span class="n">JOB</span> <span class="n">B</span> <span class="n">B</span><span class="o">.</span><span class="n">sub</span>
+<span class="n">JOB</span> <span class="n">C</span> <span class="n">C</span><span class="o">.</span><span class="n">sub</span>
+<span class="n">JOB</span> <span class="n">D</span> <span class="n">D</span><span class="o">.</span><span class="n">sub</span>
+<span class="n">PARENT</span> <span class="n">A</span> <span class="n">CHILD</span> <span class="n">B</span> <span class="n">C</span>
+<span class="n">PARENT</span> <span class="n">B</span> <span class="n">C</span> <span class="n">CHILD</span> <span class="n">D</span>
+</pre></div>
+</div>
+<p><strong>SPLICE</strong>
+A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">SpliceName</span> <span class="n">DAGFileName</span> <span class="p">[</span><span class="n">DIR</span> <span class="n">directory</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>A simple DAG spliced input file is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">file1</span> <span class="n">dagFile1</span><span class="o">.</span><span class="n">dag</span>
+<span class="n">SPLICE</span> <span class="n">file2</span> <span class="n">dagFile2</span><span class="o">.</span><span class="n">dag</span>
+<span class="o">...</span>
+<span class="n">SPLICE</span> <span class="n">file5</span> <span class="n">dagFile5</span><span class="o">.</span><span class="n">dag</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="inprogress">
 <h2>InProgress<a class="headerlink" href="#inprogress" title="Permalink to this headline">¶</a></h2>
