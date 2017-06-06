@@ -24,6 +24,7 @@ Contents:
    settingtemplate
    pipeline
    chtc
+   components
    authors
    license
    help

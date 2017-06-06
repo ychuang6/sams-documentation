@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Authors" href="authors.html"/>
+        <link rel="next" title="Components" href="components.html"/>
         <link rel="prev" title="Basic Workflow" href="pipeline.html"/> 
 
   
@@ -97,13 +97,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cluster Computing Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#workflow-map">Workflow Map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-components">Important Components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#submit-file">Submit File</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#important-components">Important Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inprogress">InProgress</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
@@ -182,69 +180,31 @@
 </div>
 <div class="section" id="important-components">
 <h2>Important Components<a class="headerlink" href="#important-components" title="Permalink to this headline">¶</a></h2>
-<p>SPLICE
-DAG
-Submit File
-Scripts</p>
-<div class="section" id="submit-file">
-<h3>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h3>
-<p>HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file will specify the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
-The SAMS Pipeline will consists of two main submit file:
-1) SAMS.sub - A submit file for <em>Registration</em> Job
-2) Average.sub - A submit file for <em>Compositing</em> Job</p>
-<p>SAMS.sub</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
-getenv=True
-environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
-executable=&lt;location&gt;/mandible.wrapper.chtc.sh
-should_transfer_files=YES
-when_to_transfer_output=ON_EXIT
-request_cpus=1
-request_memory=$(memory)
-request_disk=6G
-
-requirements = (HasGluster == true)
-periodic_release=((JobStatus==5)&amp;&amp;((CurrentTime - EnteredCurrentStatus)&gt;360))
-
-transfer_input_files=$(studyDir)/sams/mandible.register.chtc.sh,$(studyDir)/bin/c3d,$(test_dicom),$(test_model),$(refImg),$(refMod),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz,&lt;location&gt;/ants-chtc-built.tgz
-
-arguments=&quot;$(now) $(test_name) $(refName) $(Cluster) $(useModel)&quot;
-log=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).log
-output=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).out
-error=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).err
-notification=Error
-notify_user=&lt;user@email.com&gt;
-stream_output=True
-
-queue
-</pre></div>
-</div>
-<p>Average.sub</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
-getenv=True
-environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
-executable=&lt;location&gt;/average.wrapall.chtc.sh
-should_transfer_files=YES
-when_to_transfer_output=ON_EXIT
-request_cpus=1
-request_memory=10000
-request_disk=8G
-requirements = (HasGluster == true)
-
-transfer_input_files=$(studyDir)/sams/average.weighted-averaging.chtc.sh,$(studyDir)/sams/mandible.unpack-output.sh,$(studyDir)/bin/c3d,&lt;location&gt;/$(test_name)/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
-
-arguments=&quot;$(now) $(test_name) $(dir_name) $(Cluster) $(comp)&quot;
-log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
-output=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).out
-error=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).err
-notification=Error
-notify_user=&lt;user@email.com&gt;
-stream_output=True
-
-queue
-</pre></div>
-</div>
-</div>
+<p>Terminology:</p>
+<dl class="docutils">
+<dt>JOB <span class="classifier-delimiter">:</span> <span class="classifier">The <em>JOB</em> keyword specifies a job to be managed by Condor. ::</span></dt>
+<dd>JOB <em>JobName SubmitFileName</em></dd>
+<dt>PARENT ... CHILD <span class="classifier-delimiter">:</span> <span class="classifier">The <em>PARENT</em> and <em>CHILD</em> keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::</span></dt>
+<dd>PARENT ParentJobName... CHILD ChildJobName...</dd>
+</dl>
+<p>DAG : Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information.
+A DAG file will be executed by running <em>condor_submit_dag</em> &lt;dagfilename&gt;.dag</p>
+<dl class="docutils">
+<dt>A very simple DAG input file is ::</dt>
+<dd>JOB A A.sub
+JOB B B.sub
+JOB C C.sub
+JOB D D.sub
+PARENT A CHILD B C
+PARENT B C CHILD D</dd>
+<dt>SPLICE <span class="classifier-delimiter">:</span> <span class="classifier">A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::</span></dt>
+<dd>SPLICE <em>SpliceName</em> DAGFileName [DIR directory]</dd>
+<dt>A simple DAG spliced input file is ::</dt>
+<dd>SPLICE file1 dagFile1.dag
+SPLICE file2 dagFile2.dag
+...
+SPLICE file5 dagFile5.dag</dd>
+</dl>
 </div>
 <div class="section" id="inprogress">
 <h2>InProgress<a class="headerlink" href="#inprogress" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +222,7 @@ queue
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="authors.html" class="btn btn-neutral float-right" title="Authors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="components.html" class="btn btn-neutral float-right" title="Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pipeline.html" class="btn btn-neutral" title="Basic Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; samspipeline 1.0 documentation</title>
+  <title>Components &mdash; samspipeline 1.0 documentation</title>
   
 
   
@@ -34,7 +33,7 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/> 
 
@@ -95,7 +94,6 @@
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
@@ -143,12 +141,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Components</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/components.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -160,11 +160,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+  <div class="section" id="components">
+<h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submit-file">
+<h2>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h2>
+<p>HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file will specify the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
+The SAMS Pipeline will consists of two main submit file:
+1) SAMS.sub - A submit file for <em>Registration</em> Job
+2) Average.sub - A submit file for <em>Compositing</em> Job</p>
+<p>SAMS.sub</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+getenv=True
+environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
+executable=&lt;location&gt;/mandible.wrapper.chtc.sh
+should_transfer_files=YES
+when_to_transfer_output=ON_EXIT
+request_cpus=1
+request_memory=$(memory)
+request_disk=6G
 
-<h1 id="index">Index</h1>
+requirements = (HasGluster == true)
+periodic_release=((JobStatus==5)&amp;&amp;((CurrentTime - EnteredCurrentStatus)&gt;360))
 
-<div class="genindex-jumpbox">
- 
+transfer_input_files=&lt;location&gt;/mandible.register.chtc.sh,&lt;location&gt;/bin/c3d,$(test_dicom),$(test_model),$(refImg),$(refMod),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz,&lt;location&gt;/ants-chtc-built.tgz
+
+arguments=&quot;$(now) $(test_name) $(refName) $(Cluster) $(useModel)&quot;
+log=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).log
+output=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).out
+error=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).err
+notification=Error
+notify_user=&lt;user@email.com&gt;
+stream_output=True
+
+queue
+</pre></div>
+</div>
+<p>Average.sub</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+getenv=True
+environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
+executable=&lt;location&gt;/average.wrapper.chtc.sh
+should_transfer_files=YES
+when_to_transfer_output=ON_EXIT
+request_cpus=1
+request_memory=10000
+request_disk=8G
+requirements = (HasGluster == true)
+
+transfer_input_files=&lt;location&gt;/average.weighted-averaging.chtc.sh,&lt;location&gt;/mandible.unpack-output.sh,&lt;location&gt;/bin/c3d,&lt;location&gt;/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
+
+arguments=&quot;$(now) $(test_name) $(dir_name) $(Cluster) $(comp)&quot;
+log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
+output=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).out
+error=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).err
+notification=Error
+notify_user=&lt;user@email.com&gt;
+stream_output=True
+
+queue
+</pre></div>
+</div>
+</div>
 </div>
 
 
