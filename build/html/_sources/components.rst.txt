@@ -2,7 +2,7 @@ Components
 ==========
 In this section we will go through the main components used in setting up SAMS Pipeline with CHTC machine pool.
 Shown below is the workflow set up for SAMS Pipeline when working with CHTC resources.
-.. image:: ../images/SAMSCHTC-Flowchart.png
+.. image:: images/SAMSCHTC-Flowchart.png
 
 DAG File
 --------
