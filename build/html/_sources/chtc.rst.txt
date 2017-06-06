@@ -11,10 +11,13 @@ Workflow Map
 ------------
 The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the `DAGMan Documentation <https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html>`_ in the HTCondor manual for detailed information. 
 
+.. image:: images/SAMSCHTC-Flowchart.png
+
+
 <insert workflow Map>
 
-Important Terminology
----------------------
+Terminology
+-----------
 The list of terminology provided below are brief snippet of their actual and potential function. Please refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanation. 
 
 **JOB** 
@@ -55,10 +58,10 @@ A simple DAG spliced input file is ::
    ...
    SPLICE file5 dagFile5.dag
 
+**Gluster**
+Gluster is a file share maintained by CHTC, used for files or software that are too large for HTCondor file transfer. See `<http://chtc.cs.wisc.edu/file-avail-gluster.shtml>`_ for explanation.
 
 
-InProgress
-----------
 *This Section is still in progress*
 
 

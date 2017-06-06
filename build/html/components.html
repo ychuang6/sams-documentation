@@ -35,7 +35,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Authors" href="authors.html"/>
+        <link rel="prev" title="Cluster Computing Workflow" href="chtc.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,12 +90,21 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submit-file">Submit File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executing-scripts">Executing Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#registration">Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compositing">Compositing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
@@ -162,17 +173,20 @@
             
   <div class="section" id="components">
 <h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<p>In this section we will go through the main components used in setting up SAMS Pipeline with CHTC machine pool.
+Shown below is the workflow set up for SAMS Pipeline when working with CHTC resources.
+.. image:: ../images/SAMSCHTC-Flowchart.png</p>
 <div class="section" id="submit-file">
 <h2>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h2>
-<p>HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file will specify the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
-The SAMS Pipeline will consists of two main submit file:
-1) SAMS.sub - A submit file for <em>Registration</em> Job
-2) Average.sub - A submit file for <em>Compositing</em> Job</p>
-<p>SAMS.sub</p>
+<p>HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file is a text file that specifies the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
+The SAMS Pipeline will consists of two submit files:
+1) Registration.submit - A submit file for <em>Registration</em> Job
+2) Compositing.submit - A submit file for <em>Compositing</em> Job</p>
+<p>Registration.submit</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
-executable=&lt;location&gt;/mandible.wrapper.chtc.sh
+executable=&lt;location&gt;/mandible.wrapper.sh
 should_transfer_files=YES
 when_to_transfer_output=ON_EXIT
 request_cpus=1
@@ -182,7 +196,7 @@ request_disk=6G
 requirements = (HasGluster == true)
 periodic_release=((JobStatus==5)&amp;&amp;((CurrentTime - EnteredCurrentStatus)&gt;360))
 
-transfer_input_files=&lt;location&gt;/mandible.register.chtc.sh,&lt;location&gt;/bin/c3d,$(test_dicom),$(test_model),$(refImg),$(refMod),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz,&lt;location&gt;/ants-chtc-built.tgz
+transfer_input_files=&lt;location&gt;/mandible.register.sh,&lt;location&gt;/bin/c3d,$(test_dicom),$(test_model),$(refImg),$(refMod),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz,&lt;location&gt;/ants-chtc-built.tgz
 
 arguments=&quot;$(now) $(test_name) $(refName) $(Cluster) $(useModel)&quot;
 log=$(id)_T-$(test_name)_R-$(refName)_$(Cluster)_$(now).log
@@ -195,11 +209,11 @@ stream_output=True
 queue
 </pre></div>
 </div>
-<p>Average.sub</p>
+<p>Compositing.submit</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
-executable=&lt;location&gt;/average.wrapper.chtc.sh
+executable=&lt;location&gt;/compositing.wrapper.sh
 should_transfer_files=YES
 when_to_transfer_output=ON_EXIT
 request_cpus=1
@@ -207,7 +221,7 @@ request_memory=10000
 request_disk=8G
 requirements = (HasGluster == true)
 
-transfer_input_files=&lt;location&gt;/average.weighted-averaging.chtc.sh,&lt;location&gt;/mandible.unpack-output.sh,&lt;location&gt;/bin/c3d,&lt;location&gt;/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
+transfer_input_files=&lt;location&gt;/weighted-averaging.sh,&lt;location&gt;/mandible.unpack-output.sh,&lt;location&gt;/bin/c3d,&lt;location&gt;/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
 
 arguments=&quot;$(now) $(test_name) $(dir_name) $(Cluster) $(comp)&quot;
 log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
@@ -221,6 +235,42 @@ queue
 </pre></div>
 </div>
 </div>
+<div class="section" id="executing-scripts">
+<h2>Executing Scripts<a class="headerlink" href="#executing-scripts" title="Permalink to this headline">¶</a></h2>
+<p>As shown in the flowchart above, there are two executing scripts for the Registration step and Compositing step respectively. These two steps are linked through a PARENT-CHILD dependency listed in the submit DAG file.
+The two scripts consist of a &#8220;wrapper&#8221; script and an executing script.</p>
+<div class="topic">
+<p class="topic-title first">Wrapper</p>
+<p>Initiate and make referral to executing environment
+Specify all variables and arguments need for executing script
+Unzip and install software prebuilt on machine
+Run executing script
+Compile output into tarball and export to gluster</p>
+</div>
+<div class="topic">
+<p class="topic-title first">Executing Script</p>
+<p>Run software with wrapper-specified arguments</p>
+</div>
+<div class="section" id="registration">
+<h3>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h3>
+<p>Scripts used are</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mandible</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">mandible</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation section</p>
+</div>
+<div class="section" id="compositing">
+<h3>Compositing<a class="headerlink" href="#compositing" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Scripts used are ::</dt>
+<dd>compositing.wrapper.sh
+weighted-averaging.sh
+mandible.unpack.sh</dd>
+</dl>
+<p>The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section</p>
+</div>
+</div>
 </div>
 
 
@@ -230,6 +280,15 @@ queue
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="authors.html" class="btn btn-neutral float-right" title="Authors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="chtc.html" class="btn btn-neutral" title="Cluster Computing Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

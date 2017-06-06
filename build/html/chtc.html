@@ -97,8 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cluster Computing Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#workflow-map">Workflow Map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-terminology">Important Terminology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inprogress">InProgress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
@@ -176,10 +175,11 @@
 <div class="section" id="workflow-map">
 <h2>Workflow Map<a class="headerlink" href="#workflow-map" title="Permalink to this headline">¶</a></h2>
 <p>The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html">DAGMan Documentation</a> in the HTCondor manual for detailed information.</p>
+<img alt="_images/SAMSCHTC-Flowchart.png" src="_images/SAMSCHTC-Flowchart.png" />
 <p>&lt;insert workflow Map&gt;</p>
 </div>
-<div class="section" id="important-terminology">
-<h2>Important Terminology<a class="headerlink" href="#important-terminology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
 <p>The list of terminology provided below are brief snippet of their actual and potential function. Please refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a> for detailed explanation.</p>
 <p><strong>JOB</strong>
 The <em>JOB</em> keyword specifies a job to be managed by Condor.</p>
@@ -215,9 +215,8 @@ A splice is an instance of a subgraph which specified in a separate DAG file. Th
 <span class="n">SPLICE</span> <span class="n">file5</span> <span class="n">dagFile5</span><span class="o">.</span><span class="n">dag</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="inprogress">
-<h2>InProgress<a class="headerlink" href="#inprogress" title="Permalink to this headline">¶</a></h2>
+<p><strong>Gluster</strong>
+Gluster is a file share maintained by CHTC, used for files or software that are too large for HTCondor file transfer. See <a class="reference external" href="http://chtc.cs.wisc.edu/file-avail-gluster.shtml">http://chtc.cs.wisc.edu/file-avail-gluster.shtml</a> for explanation.</p>
 <p><em>This Section is still in progress</em></p>
 </div>
 </div>
