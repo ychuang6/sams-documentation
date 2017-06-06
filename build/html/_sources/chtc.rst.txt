@@ -22,10 +22,12 @@ The *JOB* keyword specifies a job to be managed by Condor. ::
 
    JOB JobName SubmitFileName 
 
+
 **PARENT ... CHILD**
 The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::
 
    PARENT ParentJobName... CHILD ChildJobName... 
+
 
 **DAG**
 Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job withint Condor. See HTCondor Manual for more information. 
