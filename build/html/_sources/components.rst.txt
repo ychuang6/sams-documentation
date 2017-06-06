@@ -4,6 +4,26 @@ In this section we will go through the main components used in setting up SAMS P
 Shown below is the workflow set up for SAMS Pipeline when working with CHTC resources.
 .. image:: ../images/SAMSCHTC-Flowchart.png
 
+DAG File
+--------
+
+Sample dag file ::
+
+	JOB TestA-RefA Registration.submit
+	VARS TestA-RefA id=“mandible.submit.chtc”
+	VARS TestA-RefA test_name=“F001-00-01-002”
+	VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
+	VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
+	VARS TestA-RefA refModel=“F155-10-00-002-M_trimmed.nii.gz”
+	VARS TestA-RefA Now=“<timenow>”
+	VARS TestA-RefA useModel=“true”
+	...
+	JOB TestA-Compositing Compositing.submit
+	VARS .... ... 
+	...
+	PARENT TestA-RefA TestA-RefB ... CHILD TestA-Compositing
+
+
 
 Submit File
 -----------
@@ -65,6 +85,7 @@ Compositing.submit ::
 
         queue
 
+
 Executing Scripts
 -----------------
 As shown in the flowchart above, there are two executing scripts for the Registration step and Compositing step respectively. These two steps are linked through a PARENT-CHILD dependency listed in the submit DAG file. 
@@ -98,6 +119,7 @@ Compositing
 ~~~~~~~~~~~
 
 Scripts used are ::
+
 	compositing.wrapper.sh
 	weighted-averaging.sh
 	mandible.unpack.sh
