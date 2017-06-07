@@ -10,7 +10,7 @@ DAG File
 Sample dag file ::
 
 	JOB TestA-RefA Registration.submit
-	VARS TestA-RefA id=“mandible.submit.chtc”
+	VARS TestA-RefA id=“mandible.submit.sh”
 	VARS TestA-RefA test_name=“F001-00-01-002”
 	VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
 	VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
@@ -41,7 +41,7 @@ Registration.submit ::
         should_transfer_files=YES
         when_to_transfer_output=ON_EXIT
         request_cpus=1
-        request_memory=$(memory)
+        request_memory=4000
         request_disk=6G
 
         requirements = (HasGluster == true)
@@ -73,7 +73,7 @@ Compositing.submit ::
         request_disk=8G
         requirements = (HasGluster == true)
 
-        transfer_input_files=<location>/weighted-averaging.sh,<location>/mandible.unpack-output.sh,<location>/bin/c3d,<location>/$(test_model),<location>/fsl-5.0.8-chtc-built.tgz
+        transfer_input_files=<location>/weighted-averaging.sh,<location>/mandible.unpack.sh,<location>/bin/c3d,<location>/$(test_model),<location>/fsl-5.0.8-chtc-built.tgz
 
         arguments="$(now) $(test_name) $(dir_name) $(Cluster) $(comp)"
         log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
@@ -124,7 +124,7 @@ Scripts used are ::
 	weighted-averaging.sh
 	mandible.unpack.sh
 
-The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section
+The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section.
 
 
 

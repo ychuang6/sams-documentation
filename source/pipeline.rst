@@ -23,7 +23,7 @@ These dimensions information will be used as input values to crop the image into
 	$ fslroi <trim_image> <input_image> <xlower> <xupper> <ylower> <yupper> <zlower> <zupper>
 	$ SVAdjustVoxelspace -in <trim_image> -origin 0 0 0 
 
-The image will be thresholded according to the threshold value the user collected::
+The image will be thresholded according to the threshold value the user collected. Typical threshold range are between 90-300 in Hounsfield Unit (HU)::
 
 	$ fslmaths <trim_image> -thr <threshold_value> -uthr 3000 <trim_image>
 
@@ -45,7 +45,17 @@ Automatic Segmentation
 ~~~~~~~~~~~~~~~~~~~~~~
 ANTS registration (shown are the command using ANTS instead of antsRegistration) ::
  
-	$ ANTS 3 -m MSQ[<referenceTemplate>, <testScan>, 1, 0] -o <output>.nii.gz -i 10x20x5 -r Gauss[4,0] -t SyN[4] --affine-metric-type MSQ --number-of-affine-iterations 2000x2000x2000 <output>.log
+	$ ANTS 3 -m MSQ[<referenceScan>, <testScan>, 1, 0] -o <output>.nii.gz -i 10x20x5 -r Gauss[4,0] -t SyN[4] --affine-metric-type MSQ --number-of-affine-iterations 2000x2000x2000 <output>.log
+
+The ANTS parameter listed here are as follow: 
+	i. Similarity Metric = MSQ[<referenceScan], <testScan>, 1, 0]
+	ii. Deformable iteration = 5 x 50 x 10
+	iii. Regularizer = Gauss[4,0]
+	iv. Transformation = SyN[0.4]
+	v. Affine metric type = MSQ
+	vi. Number of affine iterations = 2000 x 2000 x 2000
+
+	These values were obtained after in-house parameter sweeping. Users can alter the values according to their targeted reference templates age range and demographics. 
 
 Followed by ::
 
