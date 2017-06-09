@@ -15,17 +15,40 @@ The following pre-processing step accepts both Analyze75 and NIfTI file format a
 
 Pre-processing
 --------------
-In pre-processing, the input *test scan* will be inspected by user to find the minimal enclosing box that contains the mandible. 
-User will record the smallest and largest slice number of the image in all X, Y and Z direction. 
+In pre-processing, the input *test scan* will be inspected by user to:
 
+1. Find a threshold value in Hounsfield Unit (HU) that provides best quality of the mandible.
+2. Find the minimal enclosing box that contains the mandible. 
+
+
+In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue as shown below:
+
+.. image:: images/ThresholdSample.png
+
+Typical threshold range between 80-300. 
+
+
+Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
 These dimensions information will be used as input values to crop the image into its minimal enclosing box::
 
 	$ fslroi <trim_image> <input_image> <xlower> <xupper> <ylower> <yupper> <zlower> <zupper>
 	$ SVAdjustVoxelspace -in <trim_image> -origin 0 0 0 
 
-The image will be thresholded according to the threshold value the user collected. Typical threshold range are between 90-300 in Hounsfield Unit (HU)::
+The image will be then be thresholded according to the threshold value the user collected.::
 
 	$ fslmaths <trim_image> -thr <threshold_value> -uthr 3000 <trim_image>
+
+
+Effect of applying threshold to a cropped *test scan* in all anatomical orientation. Top row are raw, cropped scan, bottom row are thresholded scan. 
+
+.. image:: images/RawThreshold.jpg
+
+
+Shown below are illustrations of cropping input *test scan* down to its minimal enclosing box: 
+
+.. image:: images/Cropped3D.jpg
+.. image:: images/ThresholdedCropped.png
+
 
 Bias correction is then applied to decrease scan intensity inhomogeneity::
 

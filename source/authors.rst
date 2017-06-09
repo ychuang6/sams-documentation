@@ -7,7 +7,7 @@ This project is thoroughly supervised by the VTLab Director Dr. Houri K. Vorperi
 
 Acknowledgement
 ===============
-The support of Lauren Michael of Center of High-Throughput Computing (CHTC), University of Wisconsin-Madison, was critical to this project.
+We would like to acknowledge Lauren Michael of Center of High-Throughput Computing (CHTC), University of Wisconsin-Madison, for the support she has provided to this project.
 
 This work was supported by NIH research grant R01 DC006282 (MRI and CT Studies of the Developing Vocal Tract, Houri K. Vorperian, Principal Investigator) from the National Institute on Deafness and other Communication Disorders (NIDCD), and by a core grant P30 HD03352 and U54 HD090256 to the Waisman Center (Albee Messing, PI) for research support from the National Institute of Child Health and Human Development (NICHD).
 

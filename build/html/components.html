@@ -107,6 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html#acknowledgement">Acknowledgement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
 </ul>
@@ -181,7 +182,7 @@ Shown below is the workflow set up for SAMS Pipeline when working with CHTC reso
 <h2>DAG File<a class="headerlink" href="#dag-file" title="Permalink to this headline">¶</a></h2>
 <p>Sample dag file</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>JOB TestA-RefA Registration.submit
-VARS TestA-RefA id=“mandible.submit.chtc”
+VARS TestA-RefA id=“mandible.submit.sh”
 VARS TestA-RefA test_name=“F001-00-01-002”
 VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
 VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
@@ -210,7 +211,7 @@ executable=&lt;location&gt;/mandible.wrapper.sh
 should_transfer_files=YES
 when_to_transfer_output=ON_EXIT
 request_cpus=1
-request_memory=$(memory)
+request_memory=4000
 request_disk=6G
 
 requirements = (HasGluster == true)
@@ -241,7 +242,7 @@ request_memory=10000
 request_disk=8G
 requirements = (HasGluster == true)
 
-transfer_input_files=&lt;location&gt;/weighted-averaging.sh,&lt;location&gt;/mandible.unpack-output.sh,&lt;location&gt;/bin/c3d,&lt;location&gt;/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
+transfer_input_files=&lt;location&gt;/weighted-averaging.sh,&lt;location&gt;/mandible.unpack.sh,&lt;location&gt;/bin/c3d,&lt;location&gt;/$(test_model),&lt;location&gt;/fsl-5.0.8-chtc-built.tgz
 
 arguments=&quot;$(now) $(test_name) $(dir_name) $(Cluster) $(comp)&quot;
 log=$(id)_T-$(test_name)_O-$(dir_name)_$(Cluster).log
@@ -288,7 +289,7 @@ Compile output into tarball and export to gluster</p>
 <span class="n">mandible</span><span class="o">.</span><span class="n">unpack</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section</p>
+<p>The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section.</p>
 </div>
 </div>
 </div>

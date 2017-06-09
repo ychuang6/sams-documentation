@@ -3,13 +3,13 @@ Cluster Computing Workflow
 
 The VTLab uses resources from the Center of High Throughput Computing (CHTC) here in University of Wisconsin-Madison to execute the automatic segmentation and compositing step of the pipeline. Due to the multiple template-based CT image registration design of this portion of the pipeline, a parallel computing environment provides more computing resources to complete multiple registration in the same time frame. This is, however, not limited to the environment described here. 
 
-The pipeline is integrated to work with HTCondor scheduler on remote clusters with higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources. It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user. 
+The pipeline is integrated to work with HTCondor for higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources, consisting of machines (typically a physical computer) that may have multiple cores and slot (unit of a machine, often corresponds to one core). It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user. 
 
 For more information regarding HTCondor, refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_.  
 
 Workflow Map
 ------------
-The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTConder, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as a dependencies.  Please refer to the `DAGMan Documentation <https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html>`_ in the HTCondor manual for detailed information. 
+The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTCondor, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as dependencies.  Please refer to the `DAGMan Documentation <https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html>`_ in the HTCondor manual for detailed information. 
 
 .. image:: images/SAMSCHTC-Flowchart.png
 
@@ -18,7 +18,7 @@ The registration and compositing commands described in the Basic Workflow sectio
 
 Terminology
 -----------
-The list of terminology provided below are brief snippet of their actual and potential function. Please refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanation. 
+The list of terminology provided below are brief snippets of their actual and potential functions. Please refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanation. 
 
 **JOB** 
 The *JOB* keyword specifies a job to be managed by Condor. ::
@@ -57,6 +57,7 @@ A simple DAG spliced input file is ::
    SPLICE file2 dagFile2.dag
    ...
    SPLICE file5 dagFile5.dag
+
 
 **Gluster**
 Gluster is a file share maintained by CHTC, used for files or software that are too large for HTCondor file transfer. See `<http://chtc.cs.wisc.edu/file-avail-gluster.shtml>`_ for explanation.
