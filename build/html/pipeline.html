@@ -180,12 +180,34 @@
   <div class="section" id="basic-workflow">
 <h1>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h1>
 <p>After setting up the required dependencies and <em>reference templates</em>, you are ready to segment a 3D mandible from an input raw CT image (<em>test scan</em>).</p>
+<p>Here we are going through all commands involved in the pipelines. Variable names/values/files intended for users to modify / decide are enclosed between <strong>&lt; &gt;</strong>.</p>
+<p>For example, below is a command applying threshold to a mandible image</p>
+<div class="topic">
+<p class="topic-title first">Example</p>
+<p>$ fslmaths &lt;input_mandible_image&gt; -thr &lt;user_decided_threshold_value&gt; -uthr 3000 &lt;output_thresholded_mandible_image&gt;</p>
+</div>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>fslmaths</em> is the executing function,</li>
+<li><em>&lt;input_mandible_image&gt;</em>, as the variable name has stated, it refer to the file of the input mandible image, so user should replace this value with the filename (eg: mandibleA.nii),</li>
+<li><em>thr</em> is the setting to the executing function, in this case the value following this will set the value to the minimum threshold,</li>
+<li><em>&lt;user_decided_threshold_value&gt;</em> is thus a numerical value the user assigned to be the minimum threshold,</li>
+<li><em>uthr</em> is also the setting to the executing function, stands for &#8220;<em>upper threshold</em>&#8221;, the value following this will set the value to the maximum / upper threshold limit,</li>
+<li><em>3000</em> is the upper threshold limit,</li>
+<li><em>&lt;output_thresholded_mandible_image&gt;</em>, as the variable name has stated, this will be the output of the above setting, user should enter the desired output filename here (eg: mandibleThresholded.nii)</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Also refer to related documentations of functions and commands described in this documentation for detailed explanation.</p>
+</div>
 <div class="section" id="input-preparation">
 <h2>Input Preparation<a class="headerlink" href="#input-preparation" title="Permalink to this headline">¶</a></h2>
 <p>Before starting the SAMS pipeline, the desire input files should be converted from its DICOM series into Analyze75 file format [.hdr/.img] or equivalent.</p>
 <p>In Analyze 12.0, user will inspect the scan and collect the threshold needed to remove all non-osseous tissues from the 3D renderings.</p>
 <p>If an alternative software is used for inspection and threshold collection, the input file can also be saved as NIfTI file format [.nii or .nii.gz].</p>
-<p>The following pre-processing step accepts both Analyze75 and NIfTI file format as the input <em>test scan</em>.</p>
+<p>The following pre-processing step accepts both Analyze75 and NIfTI file format as the input <em>test scan.</em></p>
 </div>
 <div class="section" id="pre-processing">
 <h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">¶</a></h2>
@@ -220,7 +242,7 @@ $ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
 </div>
 <div class="figure" id="id4">
 <img alt="_images/ThresholdedCropped.png" src="_images/ThresholdedCropped.png" />
-<p class="caption"><span class="caption-text"><strong>Figure 4b</strong>. Illustration of cropping effect of <em>Figure 4a</em> on boney structure.</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 4b</strong>. Illustration of the cropping effect shown in <em>Figure 4a</em> on boney structure.</span></p>
 </div>
 <p>Bias correction is then applied to decrease scan intensity inhomogeneity:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ N4BiasFieldCorrection -d 3 -i &lt;trim_image&gt; -o &lt;trim_image&gt;
@@ -275,7 +297,11 @@ $ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;t
 </div>
 <div class="figure" id="id5">
 <img alt="_images/M227normthres.jpg" src="_images/M227normthres.jpg" />
-<p class="caption"><span class="caption-text"><strong>Figure 5</strong>. Left: Normalized mandible composite formed after combining binaries from the 54 registration processes. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; Right: Mandible composite after normalization and threshold.</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 5</strong>. <strong>Left</strong>: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; <strong>Right</strong>: Mandible composite after normalization and threshold.</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">3D Mandibles in Figure 5 was rendered using the Volume Viewer module in ImageJ.</p>
 </div>
 </div>
 </div>
@@ -289,11 +315,16 @@ In our case, the output from step 2 is in NIfTI file format:</p>
 </div>
 <p>Now you can view the 3D mandible:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">patch</span><span class="p">(</span><span class="n">mandible</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;FaceColor&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;EdgeColor&#39;</span><span class="p">,</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;FaceColor&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;ColorValues&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;EdgeColor&#39;</span><span class="p">,</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
 <span class="n">camlight</span>
 </pre></div>
 </div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="_images/M227matlabrender.png"><img alt="_images/M227matlabrender.png" src="_images/M227matlabrender.png" style="width: 572.4px; height: 502.8px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 6</strong>. 3D mandible model rendered in Matlab using a color matrix value of [0.75 0.75 0.70].</span></p>
+</div>
 <p>Rotate the mandible to inspect any regions requiring further enhancement</p>
+<p>For more MATLAB parameters and specifications, refer to the MATLAB Documentation on <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/patch-properties.html">Patch Properties</a>.</p>
 <div class="section" id="manual-editing">
 <h3>Manual Editing<a class="headerlink" href="#manual-editing" title="Permalink to this headline">¶</a></h3>
 <p>If the mandible needs to be edited manually, the NIfTI file will be padded into its original dimension using AFNI.

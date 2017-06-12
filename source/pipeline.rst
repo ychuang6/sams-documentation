@@ -3,6 +3,28 @@ Basic Workflow
 
 After setting up the required dependencies and *reference templates*, you are ready to segment a 3D mandible from an input raw CT image (*test scan*). 
 
+Here we are going through all commands involved in the pipelines. Variable names/values/files intended for users to modify / decide are enclosed between **< >**. 
+
+For example, below is a command applying threshold to a mandible image
+
+.. topic:: Example
+	
+	$ fslmaths <input_mandible_image> -thr <user_decided_threshold_value> -uthr 3000 <output_thresholded_mandible_image>
+
+where 
+
+	- *fslmaths* is the executing function,
+	- *<input_mandible_image>*, as the variable name has stated, it refer to the file of the input mandible image, so user should replace this value with the filename (eg: mandibleA.nii), 
+	- *thr* is the setting to the executing function, in this case the value following this will set the value to the minimum threshold,
+	- *<user_decided_threshold_value>* is thus a numerical value the user assigned to be the minimum threshold,
+	- *uthr* is also the setting to the executing function, stands for "*upper threshold*", the value following this will set the value to the maximum / upper threshold limit,
+	- *3000* is the upper threshold limit,
+	- *<output_thresholded_mandible_image>*, as the variable name has stated, this will be the output of the above setting, user should enter the desired output filename here (eg: mandibleThresholded.nii)
+
+
+.. note:: Also refer to related documentations of functions and commands described in this documentation for detailed explanation. 
+ 
+
 Input Preparation
 -----------------
 Before starting the SAMS pipeline, the desire input files should be converted from its DICOM series into Analyze75 file format [.hdr/.img] or equivalent.
@@ -11,7 +33,8 @@ In Analyze 12.0, user will inspect the scan and collect the threshold needed to 
 
 If an alternative software is used for inspection and threshold collection, the input file can also be saved as NIfTI file format [.nii or .nii.gz]. 
 
-The following pre-processing step accepts both Analyze75 and NIfTI file format as the input *test scan*.
+The following pre-processing step accepts both Analyze75 and NIfTI file format as the input *test scan.*
+
 
 Pre-processing
 --------------
@@ -51,7 +74,7 @@ Shown below are illustrations of cropping input *test scan* down to the minimum 
 
 .. figure:: images/ThresholdedCropped.png
 
-	**Figure 4b**. Illustration of cropping effect of *Figure 4a* on boney structure.
+	**Figure 4b**. Illustration of the cropping effect shown in *Figure 4a* on boney structure.
 
 
 Bias correction is then applied to decrease scan intensity inhomogeneity::
@@ -105,8 +128,8 @@ All segmented mandibles from Automatic Segmentation steps will be compiled into 
 
 .. figure:: images/M227normthres.jpg
 
-	**Figure 5**. Left: Normalized mandible composite formed after combining binaries from the 54 registration processes. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; Right: Mandible composite after normalization and threshold.  
-
+	**Figure 5**. **Left**: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; **Right**: Mandible composite after normalization and threshold.  
+.. note:: 3D Mandibles in Figure 5 was rendered using the Volume Viewer module in ImageJ.
 
 Post-processing
 ---------------
@@ -119,10 +142,17 @@ In our case, the output from step 2 is in NIfTI file format::
 Now you can view the 3D mandible::
  
 	 p = patch(mandible)
-	 set(p,'FaceColor','red','EdgeColor','none')
+	 set(p,'FaceColor','<ColorValues>','EdgeColor','none')
 	 camlight
 
+.. figure:: images/M227matlabrender.png
+	:scale: 60%
+
+	**Figure 6**. 3D mandible model rendered in Matlab using a color matrix value of [0.75 0.75 0.70].
+
 Rotate the mandible to inspect any regions requiring further enhancement 
+
+For more MATLAB parameters and specifications, refer to the MATLAB Documentation on `Patch Properties <https://www.mathworks.com/help/matlab/ref/patch-properties.html>`_.
 
 Manual Editing
 ~~~~~~~~~~~~~~
