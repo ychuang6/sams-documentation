@@ -7,7 +7,7 @@ Here we are going through all commands involved in the pipelines. Variable names
 
 For example, below is a command applying threshold to a mandible image
 
-.. topic:: Example
+**Example** ::
 	
 	$ fslmaths <input_mandible_image> -thr <user_decided_threshold_value> -uthr 3000 <output_thresholded_mandible_image>
 

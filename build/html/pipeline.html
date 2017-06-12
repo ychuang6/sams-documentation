@@ -182,9 +182,9 @@
 <p>After setting up the required dependencies and <em>reference templates</em>, you are ready to segment a 3D mandible from an input raw CT image (<em>test scan</em>).</p>
 <p>Here we are going through all commands involved in the pipelines. Variable names/values/files intended for users to modify / decide are enclosed between <strong>&lt; &gt;</strong>.</p>
 <p>For example, below is a command applying threshold to a mandible image</p>
-<div class="topic">
-<p class="topic-title first">Example</p>
-<p>$ fslmaths &lt;input_mandible_image&gt; -thr &lt;user_decided_threshold_value&gt; -uthr 3000 &lt;output_thresholded_mandible_image&gt;</p>
+<p><strong>Example</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmaths &lt;input_mandible_image&gt; -thr &lt;user_decided_threshold_value&gt; -uthr 3000 &lt;output_thresholded_mandible_image&gt;
+</pre></div>
 </div>
 <p>where</p>
 <blockquote>
