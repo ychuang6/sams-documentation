@@ -9,7 +9,7 @@ This semi-automated segmentation pipeline uses image registration to compare an 
 
 This pipeline is developed with mainly open-source software aside from `Analyze 12.0 <http://analyzedirect.com>`_ (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation. 
 
-FSL (FMRIB Software Library) and Advance Normalization Tools (ANTs) are used for thresholding, trimming, and image registration. ITK-SNAP's Convert3D(C3D) tool is used to convert output into binary form. AFNI (Analysis of Functional NeuroImages) is used for post-processing padding and file conversion as needed. MATLAB is used for inspection of the segmented mandibles. See Installation page for links, alternatives and other information.
+FSL (FMRIB Software Library) and Advance Normalization Tools (ANTs) are used for thresholding, trimming, and image registration. ITK-SNAP's Convert3D (C3D) tool is used to convert output into binary form. AFNI (Analysis of Functional NeuroImages) is used for post-processing padding and file conversion as needed. MATLAB is used for inspection of the segmented mandibles. See Installation page for links, alternatives and other information.
 
 This pipeline consists of three major steps: 1) Pre-processing, 2) Automatic Segmentation and Compositing, and 3) Post-processing. The pipeline is semi-automated where step 1 and step 3 are processed manually.
 
@@ -24,4 +24,4 @@ Flowchart
 
 .. figure:: images/samsflowchartmain.jpg
 	
-	**Figure 1**: Flowchart of the SAMS Pipeline
+	Flowchart of the SAMS Pipeline

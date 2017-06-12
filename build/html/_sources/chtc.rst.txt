@@ -3,7 +3,7 @@ Cluster Computing Workflow
 
 The VTLab uses resources from the `Center of High Throughput Computing <http://chtc.cs.wisc.edu>`_ (CHTC) here in University of Wisconsin-Madison to execute the automatic segmentation and compositing step of the pipeline. Due to the multiple template-based CT image registration design of this portion of the pipeline, a parallel computing environment provides more computing resources to complete multiple registration in the same time frame. This is, however, not limited to the environment described here. 
 
-The pipeline is integrated to work with HTCondor for higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources, consisting of machines (typically a physical computer) that may have multiple cores and slot (unit of a machine, often corresponds to one core). It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user. 
+The pipeline is integrated to work with HTCondor for higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources, consisting of machines (typically a physical computer) that may have multiple cores and slot (unit of a machine, often corresponds to one core). It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user. 
 
 For more information regarding HTCondor, refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_.  
 
@@ -13,7 +13,7 @@ The registration and compositing commands described in the Basic Workflow sectio
 
 .. figure:: images/SAMSCHTC-Flowchart.png
 
-	**Figure 6** Flowchart demonstrating steps, scripts and components of running Automatic Segmentation and Compositing step using CHTC resources.
+	Flowchart demonstrating steps, scripts and components of running Automatic Segmentation and Compositing step using CHTC resources.
 
 
 
@@ -28,7 +28,7 @@ The *JOB* keyword specifies a job to be managed by Condor. ::
 
 
 **PARENT ... CHILD**
-The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start.::
+The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A parent node must be completed succssfully before any of the children node may be started. We use this to ensure that only when all specified registration jobs are completed, the compositing job can start. ::
 
    PARENT ParentJobName... CHILD ChildJobName... 
 
@@ -48,7 +48,7 @@ A very simple DAG input file is ::
 
 
 **SPLICE** 
-A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies.::
+A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::
 
    SPLICE SpliceName DAGFileName [DIR directory]
 

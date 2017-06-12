@@ -219,7 +219,7 @@
 <p>In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-300 HU.</p>
 <div class="figure" id="id1">
 <img alt="_images/ThresholdSample.png" src="_images/ThresholdSample.png" />
-<p class="caption"><span class="caption-text"><strong>Figure 2</strong>. From left to right: Effect of increasing mininum threshold values on a 3D rendering to allow best visualization of boney structure.</span></p>
+<p class="caption"><span class="caption-text">From left to right: Effect of increasing minimum threshold values on a 3D rendering to allow best visualization of boney structure.</span></p>
 </div>
 <p>Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
 These dimensions information will be used as input values to crop the image into its minimal enclosing box:</p>
@@ -227,22 +227,22 @@ These dimensions information will be used as input values to crop the image into
 $ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
 </pre></div>
 </div>
-<p>The image will be then be thresholded according to the threshold value the user collected.:</p>
+<p>The image will be then be thresholded according to the threshold value the user collected:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmaths &lt;trim_image&gt; -thr &lt;threshold_value&gt; -uthr 3000 &lt;trim_image&gt;
 </pre></div>
 </div>
 <div class="figure" id="id2">
 <img alt="_images/RawThreshold.jpg" src="_images/RawThreshold.jpg" />
-<p class="caption"><span class="caption-text"><strong>Figure 3</strong>. Effect of applying a threshold value to a cropped <em>test scan</em> in all anatomical orientation. Top row: cropped, raw <em>test</em> scan; Bottom row: after applying threshold.</span></p>
+<p class="caption"><span class="caption-text">Effect of applying a threshold value to a cropped <em>test scan</em> in all anatomical orientation. Top row: cropped, raw <em>test</em> scan; Bottom row: after applying threshold.</span></p>
 </div>
 <p>Shown below are illustrations of cropping input <em>test scan</em> down to the minimum enclosing box containing a complete mandibular structure:</p>
 <div class="figure" id="id3">
 <img alt="_images/Cropped3D.jpg" src="_images/Cropped3D.jpg" />
-<p class="caption"><span class="caption-text"><strong>Figure 4a</strong>. Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.</span></p>
+<p class="caption"><span class="caption-text">Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.</span></p>
 </div>
 <div class="figure" id="id4">
 <img alt="_images/ThresholdedCropped.png" src="_images/ThresholdedCropped.png" />
-<p class="caption"><span class="caption-text"><strong>Figure 4b</strong>. Illustration of the cropping effect shown in <em>Figure 4a</em> on boney structure.</span></p>
+<p class="caption"><span class="caption-text">Illustration of the cropping effect shown above on boney structure.</span></p>
 </div>
 <p>Bias correction is then applied to decrease scan intensity inhomogeneity:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ N4BiasFieldCorrection -d 3 -i &lt;trim_image&gt; -o &lt;trim_image&gt;
@@ -297,11 +297,11 @@ $ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;t
 </div>
 <div class="figure" id="id5">
 <img alt="_images/M227normthres.jpg" src="_images/M227normthres.jpg" />
-<p class="caption"><span class="caption-text"><strong>Figure 5</strong>. <strong>Left</strong>: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; <strong>Right</strong>: Mandible composite after normalization and threshold.</span></p>
+<p class="caption"><span class="caption-text"><strong>Left</strong>: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; <strong>Right</strong>: Mandible composite after normalization and threshold.</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">3D Mandibles in Figure 5 was rendered using the Volume Viewer module in ImageJ.</p>
+<p class="last">3D Mandibles in figure above was rendered using the Volume Viewer module in ImageJ.</p>
 </div>
 </div>
 </div>
@@ -321,7 +321,7 @@ In our case, the output from step 2 is in NIfTI file format:</p>
 </div>
 <div class="figure" id="id6">
 <a class="reference internal image-reference" href="_images/M227matlabrender.png"><img alt="_images/M227matlabrender.png" src="_images/M227matlabrender.png" style="width: 572.4px; height: 502.8px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Figure 6</strong>. 3D mandible model rendered in Matlab using a color matrix value of [0.75 0.75 0.70].</span></p>
+<p class="caption"><span class="caption-text">3D mandible model rendered in MATLAB using a color matrix value of [0.75 0.75 0.70].</span></p>
 </div>
 <p>Rotate the mandible to inspect any regions requiring further enhancement</p>
 <p>For more MATLAB parameters and specifications, refer to the MATLAB Documentation on <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/patch-properties.html">Patch Properties</a>.</p>

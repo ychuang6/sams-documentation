@@ -48,7 +48,7 @@ In Analyze 12.0, the threshold value is determined by adjusting for the minimum 
 
 .. figure:: images/ThresholdSample.png
 	
-	**Figure 2**. From left to right: Effect of increasing mininum threshold values on a 3D rendering to allow best visualization of boney structure.
+	From left to right: Effect of increasing minimum threshold values on a 3D rendering to allow best visualization of boney structure.
 
 
 Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
@@ -57,24 +57,24 @@ These dimensions information will be used as input values to crop the image into
 	$ fslroi <trim_image> <input_image> <xlower> <xupper> <ylower> <yupper> <zlower> <zupper>
 	$ SVAdjustVoxelspace -in <trim_image> -origin 0 0 0 
 
-The image will be then be thresholded according to the threshold value the user collected.::
+The image will be then be thresholded according to the threshold value the user collected::
 
 	$ fslmaths <trim_image> -thr <threshold_value> -uthr 3000 <trim_image>
 
 .. figure:: images/RawThreshold.jpg
 
-	**Figure 3**. Effect of applying a threshold value to a cropped *test scan* in all anatomical orientation. Top row: cropped, raw *test* scan; Bottom row: after applying threshold. 
+	Effect of applying a threshold value to a cropped *test scan* in all anatomical orientation. Top row: cropped, raw *test* scan; Bottom row: after applying threshold. 
 
 
 Shown below are illustrations of cropping input *test scan* down to the minimum enclosing box containing a complete mandibular structure: 
 
 .. figure:: images/Cropped3D.jpg
 
-	**Figure 4a**. Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.
+	Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.
 
 .. figure:: images/ThresholdedCropped.png
 
-	**Figure 4b**. Illustration of the cropping effect shown in *Figure 4a* on boney structure.
+	Illustration of the cropping effect shown above on boney structure.
 
 
 Bias correction is then applied to decrease scan intensity inhomogeneity::
@@ -128,8 +128,8 @@ All segmented mandibles from Automatic Segmentation steps will be compiled into 
 
 .. figure:: images/M227normthres.jpg
 
-	**Figure 5**. **Left**: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; **Right**: Mandible composite after normalization and threshold.  
-.. note:: 3D Mandibles in Figure 5 was rendered using the Volume Viewer module in ImageJ.
+	**Left**: Normalized mandible binary after compositing all 54 mandible binaries from registration processes. Mandibles are rendered on a grayscale here. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; **Right**: Mandible composite after normalization and threshold.  
+.. note:: 3D Mandibles in figure above was rendered using the Volume Viewer module in ImageJ.
 
 Post-processing
 ---------------
@@ -148,7 +148,7 @@ Now you can view the 3D mandible::
 .. figure:: images/M227matlabrender.png
 	:scale: 60%
 
-	**Figure 6**. 3D mandible model rendered in Matlab using a color matrix value of [0.75 0.75 0.70].
+	3D mandible model rendered in MATLAB using a color matrix value of [0.75 0.75 0.70].
 
 Rotate the mandible to inspect any regions requiring further enhancement 
 
