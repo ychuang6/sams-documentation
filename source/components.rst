@@ -2,6 +2,7 @@ Components
 ==========
 In this section we will go through the main components used in setting up SAMS Pipeline with CHTC machine pool.
 Shown below is the workflow set up for SAMS Pipeline when working with CHTC resources.
+
 .. image:: images/SAMSCHTC-Flowchart.png
 
 DAG File
@@ -10,7 +11,7 @@ DAG File
 Sample dag file ::
 
 	JOB TestA-RefA Registration.submit
-	VARS TestA-RefA id=“mandible.submit.sh”
+	VARS TestA-RefA id=“mandible.submit”
 	VARS TestA-RefA test_name=“F001-00-01-002”
 	VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
 	VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
@@ -19,7 +20,7 @@ Sample dag file ::
 	VARS TestA-RefA useModel=“true”
 	...
 	JOB TestA-Compositing Compositing.submit
-	VARS .... ... 
+	VARS TestA-Compositing id="mandible.compositing"
 	...
 	PARENT TestA-RefA TestA-RefB ... CHILD TestA-Compositing
 
@@ -93,15 +94,15 @@ The two scripts consist of a "wrapper" script and an executing script.
 
 .. topic:: Wrapper
 
-	Initiate and make referral to executing environment
-	Specify all variables and arguments need for executing script
-	Unzip and install software prebuilt on machine
-	Run executing script
-	Compile output into tarball and export to gluster
+	* Initiate and make referral to executing environment
+	* Specify all variables and arguments need for executing script
+	* Unzip and install software prebuilt on machine
+	* Run executing script
+	* Compile output into tarball and export to gluster
 
 .. topic:: Executing Script
 
-	Run software with wrapper-specified arguments
+	* Run software with wrapper-specified arguments
 
 
 Registration
@@ -112,7 +113,7 @@ Scripts used are ::
 	mandible.wrapper.sh
 	mandible.registration.sh
 
-The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation section
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation <http://samsdoc.readthedocs.io/en/latest/pipeline.html#automatic-segmentation>`_ section.
 
 
 Compositing
@@ -124,7 +125,7 @@ Scripts used are ::
 	weighted-averaging.sh
 	mandible.unpack.sh
 
-The executing script here will consist of commands specified in Basic Workflow/Automatic Segmentation and Compositing/Compositing section.
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing>`_ section.
 
 
 

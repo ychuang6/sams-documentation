@@ -5,7 +5,7 @@ The SAMS pipeline consists of shell scripts requiring several executable program
 
 Operating System Requirements
 -----------------------------
-The SAMS pipeline is set up to run in a Linux environment (Mac is possible). It has been tested on the Ubuntu 14.04 platform. Window user with access to Linux server (if available) can execute the pipeline using a terminal emulator, or set up a Linux environment using `VirtualBox <http://www.virtualbox.org/wiki/Downloads>`_.
+The SAMS pipeline is set up to run in a Linux environment (Mac is possible). It has been tested on the Ubuntu 14.04 platform. Window users with access to Linux server can execute the pipeline using a terminal emulator, or set up a Linux environment using `VirtualBox <http://www.virtualbox.org/wiki/Downloads>`_.
 
 Executable Software Dependencies
 --------------------------------
@@ -26,10 +26,12 @@ The following are a list of open-source software that can be used as alternative
 	* ITKSNAP_
 	* Slicer_
 
+
+
 Cluster Computing Environment
 -----------------------------
 This pipeline is currently designed to work with cluster computing for best performance.
-The Vocal Tract Development Lab employs High Throughput Computing (HTC) resources from the `Center for High Throughput Computing <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison. It can be adapted to use on other cluster computing environment for users who may have access to similar resource.
+The Vocal Tract Development Lab employs High Throughput Computing (HTC) resources from the `Center for High Throughput Computing <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison. It can be adapted to use on other cluster computing environment for users who may have access to similar resources too.
 
 
 

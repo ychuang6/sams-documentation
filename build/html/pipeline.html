@@ -194,9 +194,11 @@
 <li>Find a threshold value in Hounsfield Unit (HU) that provides best quality of the mandible.</li>
 <li>Find the minimal enclosing box that contains the mandible.</li>
 </ol>
-<p>In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue as shown below:</p>
+<p>In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-300 HU.</p>
+<div class="figure" id="id1">
 <img alt="_images/ThresholdSample.png" src="_images/ThresholdSample.png" />
-<p>Typical threshold range between 80-300.</p>
+<p class="caption"><span class="caption-text"><strong>Figure 2</strong>. From left to right: Effect of increasing mininum threshold values on a 3D rendering to allow best visualization of boney structure.</span></p>
+</div>
 <p>Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
 These dimensions information will be used as input values to crop the image into its minimal enclosing box:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslroi &lt;trim_image&gt; &lt;input_image&gt; &lt;xlower&gt; &lt;xupper&gt; &lt;ylower&gt; &lt;yupper&gt; &lt;zlower&gt; &lt;zupper&gt;
@@ -207,11 +209,19 @@ $ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmaths &lt;trim_image&gt; -thr &lt;threshold_value&gt; -uthr 3000 &lt;trim_image&gt;
 </pre></div>
 </div>
-<p>Effect of applying threshold to a cropped <em>test scan</em> in all anatomical orientation. Top row are raw, cropped scan, bottom row are thresholded scan.</p>
+<div class="figure" id="id2">
 <img alt="_images/RawThreshold.jpg" src="_images/RawThreshold.jpg" />
-<p>Shown below are illustrations of cropping input <em>test scan</em> down to its minimal enclosing box:</p>
+<p class="caption"><span class="caption-text"><strong>Figure 3</strong>. Effect of applying a threshold value to a cropped <em>test scan</em> in all anatomical orientation. Top row: cropped, raw <em>test</em> scan; Bottom row: after applying threshold.</span></p>
+</div>
+<p>Shown below are illustrations of cropping input <em>test scan</em> down to the minimum enclosing box containing a complete mandibular structure:</p>
+<div class="figure" id="id3">
 <img alt="_images/Cropped3D.jpg" src="_images/Cropped3D.jpg" />
+<p class="caption"><span class="caption-text"><strong>Figure 4a</strong>. Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.</span></p>
+</div>
+<div class="figure" id="id4">
 <img alt="_images/ThresholdedCropped.png" src="_images/ThresholdedCropped.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 4b</strong>. Illustration of cropping effect of <em>Figure 4a</em> on boney structure.</span></p>
+</div>
 <p>Bias correction is then applied to decrease scan intensity inhomogeneity:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ N4BiasFieldCorrection -d 3 -i &lt;trim_image&gt; -o &lt;trim_image&gt;
 </pre></div>
@@ -230,8 +240,8 @@ The 54 segmented mandibles are then composited and normalized to generate the fi
 </pre></div>
 </div>
 <dl class="docutils">
-<dt>The ANTS parameter listed here are as follow:</dt>
-<dd><ol class="first lowerroman simple">
+<dt>The ANTS parameters listed here are as follow:</dt>
+<dd><ol class="first arabic simple">
 <li>Similarity Metric = MSQ[&lt;referenceScan], &lt;testScan&gt;, 1, 0]</li>
 <li>Deformable iteration = 5 x 50 x 10</li>
 <li>Regularizer = Gauss[4,0]</li>
@@ -239,14 +249,17 @@ The 54 segmented mandibles are then composited and normalized to generate the fi
 <li>Affine metric type = MSQ</li>
 <li>Number of affine iterations = 2000 x 2000 x 2000</li>
 </ol>
-<p class="last">These values were obtained after in-house parameter sweeping. Users can alter the values according to their targeted reference templates age range and demographics.</p>
+<p class="last">These values were obtained after parameter sweeping performed in the lab. Users can alter the values according to their targeted reference templates&#8217; age range and demographics.</p>
 </dd>
 </dl>
 <p>Followed by</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ WarpImageMultiTransform 3 &lt;referenceModel&gt; &lt;affineInverseWarp&gt;.nii.gz -i &lt;ANTSAffine&gt;.txt &lt;ANTSInverseWarp&gt;.nii.gz --use-NN -R &lt;testScan&gt;
 </pre></div>
 </div>
-<p>Note: affineInverseWarp.nii.gz, ANTSAffine.txt and ANTSInverseWarp.nii.gz are output from the first step.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">affineInverseWarp.nii.gz, ANTSAffine.txt and ANTSInverseWarp.nii.gz are output from the first step.</p>
+</div>
 <p>Binarization is performed to ensure that segmented mandibles are in binary form</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ c3d &lt;affineInverseWarp&gt;.nii.gz -binarize -o &lt;segmented_mandible&gt;.nii.gz
 </pre></div>
@@ -254,13 +267,15 @@ The 54 segmented mandibles are then composited and normalized to generate the fi
 </div>
 <div class="section" id="compositing">
 <h3>Compositing<a class="headerlink" href="#compositing" title="Permalink to this headline">¶</a></h3>
-<p>All segmented mandibles from Automatic Segmentation steps will be compiled into one single composite:</p>
+<p>All segmented mandibles from Automatic Segmentation steps will be compiled into one single composite and normalized:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmerge -t &lt;allModels&gt;.nii.gz &quot;all &lt;segmented_mandibles&gt;.nii.gz separated by space&quot;
+
+$ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;total_number_of_mandibles_in_composite&gt; -bin &lt;allModels&gt;.nii.gz
 </pre></div>
 </div>
-<p>Normalization of the composite mandible:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;total_number_of_mandibles_in_composite&gt; -bin &lt;allModels&gt;.nii.gz
-</pre></div>
+<div class="figure" id="id5">
+<img alt="_images/M227normthres.jpg" src="_images/M227normthres.jpg" />
+<p class="caption"><span class="caption-text"><strong>Figure 5</strong>. Left: Normalized mandible composite formed after combining binaries from the 54 registration processes. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; Right: Mandible composite after normalization and threshold.</span></p>
 </div>
 </div>
 </div>

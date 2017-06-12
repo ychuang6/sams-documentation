@@ -170,14 +170,16 @@
             
   <div class="section" id="cluster-computing-workflow">
 <h1>Cluster Computing Workflow<a class="headerlink" href="#cluster-computing-workflow" title="Permalink to this headline">¶</a></h1>
-<p>The VTLab uses resources from the Center of High Throughput Computing (CHTC) here in University of Wisconsin-Madison to execute the automatic segmentation and compositing step of the pipeline. Due to the multiple template-based CT image registration design of this portion of the pipeline, a parallel computing environment provides more computing resources to complete multiple registration in the same time frame. This is, however, not limited to the environment described here.</p>
+<p>The VTLab uses resources from the <a class="reference external" href="http://chtc.cs.wisc.edu">Center of High Throughput Computing</a> (CHTC) here in University of Wisconsin-Madison to execute the automatic segmentation and compositing step of the pipeline. Due to the multiple template-based CT image registration design of this portion of the pipeline, a parallel computing environment provides more computing resources to complete multiple registration in the same time frame. This is, however, not limited to the environment described here.</p>
 <p>The pipeline is integrated to work with HTCondor for higher performance. HTCondor is a tool for HTC on large collections of distributive computing resources, consisting of machines (typically a physical computer) that may have multiple cores and slot (unit of a machine, often corresponds to one core). It is a specialized workload management system for compute-intensive jobs or projects requiring parallel computing power. It provides job queuing mechanism, scheduling policy, priority scheme, resource monitoring and resource management. Users submit their parallel jobs or serials and HTCondor place them into a queue, choosing when and where to run the jobs based on the specification designed by the user, monitor the progress, and ultimately return the result of the job to the user.</p>
 <p>For more information regarding HTCondor, refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a>.</p>
 <div class="section" id="workflow-map">
 <h2>Workflow Map<a class="headerlink" href="#workflow-map" title="Permalink to this headline">¶</a></h2>
 <p>The registration and compositing commands described in the Basic Workflow section are put into a workflow designed to run on the HTCondor scheduler. DAGMan (Directed Acyclic Graph Manager), a meta-scheduler for HTCondor, is utilized for the SAMS Pipeline to connect the registration and compositing steps together as dependencies.  Please refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual/latest/2_10DAGMan_Applications.html">DAGMan Documentation</a> in the HTCondor manual for detailed information.</p>
+<div class="figure" id="id2">
 <img alt="_images/SAMSCHTC-Flowchart.png" src="_images/SAMSCHTC-Flowchart.png" />
-<p>&lt;insert workflow Map&gt;</p>
+<p class="caption"><span class="caption-text"><strong>Figure 6</strong> Flowchart demonstrating steps, scripts and components of running Automatic Segmentation and Compositing step using CHTC resources.</span></p>
+</div>
 </div>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
@@ -218,7 +220,7 @@ A splice is an instance of a subgraph which specified in a separate DAG file. Th
 </div>
 <p><strong>Gluster</strong>
 Gluster is a file share maintained by CHTC, used for files or software that are too large for HTCondor file transfer. See <a class="reference external" href="http://chtc.cs.wisc.edu/file-avail-gluster.shtml">http://chtc.cs.wisc.edu/file-avail-gluster.shtml</a> for explanation.</p>
-<p><em>This Section is still in progress</em></p>
+<p><em>In progress</em></p>
 </div>
 </div>
 

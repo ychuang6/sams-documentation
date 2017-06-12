@@ -21,11 +21,11 @@ In pre-processing, the input *test scan* will be inspected by user to:
 2. Find the minimal enclosing box that contains the mandible. 
 
 
-In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue as shown below:
+In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-300 HU.
 
-.. image:: images/ThresholdSample.png
-
-Typical threshold range between 80-300. 
+.. figure:: images/ThresholdSample.png
+	
+	**Figure 2**. From left to right: Effect of increasing mininum threshold values on a 3D rendering to allow best visualization of boney structure.
 
 
 Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
@@ -38,16 +38,20 @@ The image will be then be thresholded according to the threshold value the user 
 
 	$ fslmaths <trim_image> -thr <threshold_value> -uthr 3000 <trim_image>
 
+.. figure:: images/RawThreshold.jpg
 
-Effect of applying threshold to a cropped *test scan* in all anatomical orientation. Top row are raw, cropped scan, bottom row are thresholded scan. 
-
-.. image:: images/RawThreshold.jpg
+	**Figure 3**. Effect of applying a threshold value to a cropped *test scan* in all anatomical orientation. Top row: cropped, raw *test* scan; Bottom row: after applying threshold. 
 
 
-Shown below are illustrations of cropping input *test scan* down to its minimal enclosing box: 
+Shown below are illustrations of cropping input *test scan* down to the minimum enclosing box containing a complete mandibular structure: 
 
-.. image:: images/Cropped3D.jpg
-.. image:: images/ThresholdedCropped.png
+.. figure:: images/Cropped3D.jpg
+
+	**Figure 4a**. Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.
+
+.. figure:: images/ThresholdedCropped.png
+
+	**Figure 4b**. Illustration of cropping effect of *Figure 4a* on boney structure.
 
 
 Bias correction is then applied to decrease scan intensity inhomogeneity::
@@ -62,6 +66,7 @@ Automatic Segmentation and Compositing
 This step is an entirely automatic process completed on cluster computing (if available to user). The preprocessed input-*test scan*, will be registering against 54 *template scans*, followed by the application of the resulting inverse transformation on the *template models* to generate 54 separate segmented mandibles of the input. 
 The 54 segmented mandibles are then composited and normalized to generate the final mandible. 
 
+
 Major commands used are as follow:
 
 Automatic Segmentation
@@ -70,36 +75,37 @@ ANTS registration (shown are the command using ANTS instead of antsRegistration)
  
 	$ ANTS 3 -m MSQ[<referenceScan>, <testScan>, 1, 0] -o <output>.nii.gz -i 10x20x5 -r Gauss[4,0] -t SyN[4] --affine-metric-type MSQ --number-of-affine-iterations 2000x2000x2000 <output>.log
 
-The ANTS parameter listed here are as follow: 
-	i. Similarity Metric = MSQ[<referenceScan], <testScan>, 1, 0]
-	ii. Deformable iteration = 5 x 50 x 10
-	iii. Regularizer = Gauss[4,0]
-	iv. Transformation = SyN[0.4]
-	v. Affine metric type = MSQ
-	vi. Number of affine iterations = 2000 x 2000 x 2000
+The ANTS parameters listed here are as follow: 
+	1. Similarity Metric = MSQ[<referenceScan], <testScan>, 1, 0]
+	2. Deformable iteration = 5 x 50 x 10
+	3. Regularizer = Gauss[4,0]
+	4. Transformation = SyN[0.4]
+	5. Affine metric type = MSQ
+	6. Number of affine iterations = 2000 x 2000 x 2000
 
-	These values were obtained after in-house parameter sweeping. Users can alter the values according to their targeted reference templates age range and demographics. 
+	These values were obtained after parameter sweeping performed in the lab. Users can alter the values according to their targeted reference templates' age range and demographics. 
 
 Followed by ::
 
 	$ WarpImageMultiTransform 3 <referenceModel> <affineInverseWarp>.nii.gz -i <ANTSAffine>.txt <ANTSInverseWarp>.nii.gz --use-NN -R <testScan>
 
-Note: affineInverseWarp.nii.gz, ANTSAffine.txt and ANTSInverseWarp.nii.gz are output from the first step.
+.. note:: affineInverseWarp.nii.gz, ANTSAffine.txt and ANTSInverseWarp.nii.gz are output from the first step.
 
 Binarization is performed to ensure that segmented mandibles are in binary form ::
 
 	$ c3d <affineInverseWarp>.nii.gz -binarize -o <segmented_mandible>.nii.gz
-
 	
 Compositing
 ~~~~~~~~~~~
-All segmented mandibles from Automatic Segmentation steps will be compiled into one single composite::
+All segmented mandibles from Automatic Segmentation steps will be compiled into one single composite and normalized::
 	
 	$ fslmerge -t <allModels>.nii.gz "all <segmented_mandibles>.nii.gz separated by space"
 
-Normalization of the composite mandible::
-
 	$ fslmaths <allModels>.nii.gz -thr <normalization_value> -uthr <total_number_of_mandibles_in_composite> -bin <allModels>.nii.gz
+
+.. figure:: images/M227normthres.jpg
+
+	**Figure 5**. Left: Normalized mandible composite formed after combining binaries from the 54 registration processes. Darker color represents low voxel/overlap intensity while lighter color represents high voxel/overlap intensity; Right: Mandible composite after normalization and threshold.  
 
 
 Post-processing

@@ -17,11 +17,11 @@ In summary, an input CT series stored in Digital Imaging and Communications in M
 
 Dataset
 -------
-The dataset used to design this pipeline and used as the *reference templates* were collected retrospectively following University of Wisconsin-Madison Institutional Review Board (IRB) approval (IRB number: 2011-0036 and 2016-1052).
+The dataset used to design this pipeline and used as the *reference templates* were collected retrospectively following `University of Wisconsin-Madison Institutional Review Board (IRB) <http://www.irb.wisc.edu>`_ approval (IRB number: 2011-0036 and 2016-1052).
 
 Flowchart
 ---------
-Figure 1: Flowchart of the SAMS Pipeline
 
-.. image:: images/samsflowchartmain.jpg
+.. figure:: images/samsflowchartmain.jpg
 	
+	**Figure 1**: Flowchart of the SAMS Pipeline
