@@ -48,7 +48,7 @@ A very simple DAG input file is ::
 
 
 **SPLICE** 
-A splice is an instance of a subgraph which specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::
+A splice is an instance of a subgraph which is specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT and CHILD dependencies. ::
 
    SPLICE SpliceName DAGFileName [DIR directory]
 
