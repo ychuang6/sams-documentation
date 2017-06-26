@@ -1,5 +1,5 @@
-Components
-==========
+Cluster Computing Components
+============================
 In this section we go through the main components used in setting up the SAMS pipeline with the CHTC machine pool.
 Shown below is the workflow set up for SAMS pipeline when working with CHTC resources.
 
