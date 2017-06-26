@@ -3,11 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the documentation for SAMS pipeline
-==============================================
+Welcome to the documentation for Semi-Automatic Mandible Segmentation (SAMS) Pipeline
+=====================================================================================
 
-SAMS Pipeline: Introduction
-===========================
+Semi-Automatic Mandible Segmentation (SAMS) Pipeline: Introduction
+==================================================================
 
 This semi-automatic mandible segmentation (SAMS) pipeline was developed at our `Vocal Tract Development Lab <http://www.waisman.wisc.edu/vocal/>`_ for the purpose of generating 3D mandible/jaw objects from head and neck multi-detector Computed Tomography (MDCT) images. The ultimate goal of this pipeline is to accelerate the process of consistently segmenting large number of 3D mandibles needed for analysis to quantify morphological changes of the mandible during the lifespan but more specifically during the first two decades of life. This pipeline is semi-automatic with the initial (pre-processing) and final (post-processing) steps require manual interventions.
 

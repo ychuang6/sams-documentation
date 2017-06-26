@@ -47,7 +47,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Semi-Automatic Mandible Segmentation (SAMS) Pipeline'
 copyright = u'2017, Vocal Tract Development Laboratory'
-author = u'Vocal Tract Development Laboratory'
+author = u'Vocal Tract Development Laboratory, Waisman Center, University of Wisconsin-Madison'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -126,8 +126,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'samspipeline.tex', u'samspipeline Documentation',
-     u'Vocal Tract Development Lab', 'manual'),
+    (master_doc, 'samspipeline.tex', u'Semi-Automatic Mandible Segmentation (SAMS) Pipeline Documentation',
+     u'Vocal Tract Development Laboratory', 'manual'),
 ]
 
 
@@ -136,7 +136,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'samspipeline', u'samspipeline Documentation',
+    (master_doc, 'samspipeline', u'Semi-Automatic Mandible Segmentation (SAMS) Pipeline Documentation',
      [author], 1)
 ]
 
@@ -147,8 +147,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'samspipeline', u'samspipeline Documentation',
-     author, 'samspipeline', 'One line description of project.',
+    (master_doc, 'samspipeline', u'Semi-Automatic Mandible Segmentation (SAMS) Pipeline Documentation',
+     author, 'samspipeline', 'This project is funded by NIH research grant R01 DC006282 (MRI and CT Studies of the Developing Vocal Tract, Houri K. Vorperian, Principal Investigator) from the NIDCD, and by a core grant P30 HD03352 and U54 HD090256 to the Waisman Center, University of Wisconsin-Madison.',
      'Miscellaneous'),
 ]
 
