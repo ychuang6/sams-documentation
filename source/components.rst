@@ -1,7 +1,7 @@
 Components
 ==========
-In this section we will go through the main components used in setting up SAMS Pipeline with CHTC machine pool.
-Shown below is the workflow set up for SAMS Pipeline when working with CHTC resources.
+In this section we go through the main components used in setting up the SAMS pipeline with the CHTC machine pool.
+Shown below is the workflow set up for SAMS pipeline when working with CHTC resources.
 
 .. image:: images/SAMSCHTC-Flowchart.png
 
@@ -29,9 +29,9 @@ Sample dag file ::
 Submit File
 -----------
 HTCondor scheduler relies on a *Submit File* that communicates everything about our job(s) to the scheduler. A submit file is a text file that specifies the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual).
-The SAMS Pipeline will consists of two submit files:
-1) Registration.submit - A submit file for *Registration* Job
-2) Compositing.submit - A submit file for *Compositing* Job
+The SAMS pipeline will consists of two submit files:
+1) Registration.submit - A submit file for the *Registration* Job
+2) Compositing.submit - A submit file for the *Compositing* Job
 
 Registration.submit ::
 
@@ -98,7 +98,7 @@ The two scripts consist of a "wrapper" script and an executing script.
 	* Specify all variables and arguments need for executing script
 	* Unzip and install software prebuilt on machine
 	* Run executing script
-	* Compile output into tarball and export to gluster
+	* Compile output into tarball and export to *gluster*
 
 .. topic:: Executing Script
 

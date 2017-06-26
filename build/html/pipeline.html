@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; samspipeline 1.0 documentation</title>
+  <title>Basic Workflow &mdash; Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/>
+    <link rel="top" title="Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation" href="index.html"/>
         <link rel="next" title="Cluster Computing Workflow" href="chtc.html"/>
         <link rel="prev" title="Setting up Reference Templates" href="settingtemplate.html"/> 
 
@@ -56,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> samspipeline
+            <a href="index.html" class="icon icon-home"> Semi-Automatic Mandible Segmentation (SAMS) Pipeline
           
 
           
@@ -128,7 +128,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">samspipeline</a>
+          <a href="index.html">Semi-Automatic Mandible Segmentation (SAMS) Pipeline</a>
         
       </nav>
 
@@ -179,8 +179,8 @@
             
   <div class="section" id="basic-workflow">
 <h1>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h1>
-<p>After setting up the required dependencies and <em>reference templates</em>, you are ready to segment a 3D mandible from an input raw CT image (<em>test scan</em>).</p>
-<p>Here we are going through all commands involved in the pipelines. Variable names/values/files intended for users to modify / decide are enclosed between <strong>&lt; &gt;</strong>.</p>
+<p>After setting up the required dependencies and <em>reference templates</em>, users may begin segmenting 3D mandibles from an input raw CT image (<em>test scan</em>).</p>
+<p>What follows is a list of all commands used in the SAMS pipeline. Variable names/values/files needed to be modified by users are enclosed between <strong>&lt; ... &gt;</strong>.</p>
 <p>For example, below is a command applying threshold to a mandible image</p>
 <p><strong>Example</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslmaths &lt;input_mandible_image&gt; -thr &lt;user_decided_threshold_value&gt; -uthr 3000 &lt;output_thresholded_mandible_image&gt;
@@ -190,22 +190,22 @@
 <blockquote>
 <div><ul class="simple">
 <li><em>fslmaths</em> is the executing function,</li>
-<li><em>&lt;input_mandible_image&gt;</em>, as the variable name has stated, it refer to the file of the input mandible image, so user should replace this value with the filename (eg: mandibleA.nii),</li>
+<li><em>&lt;input_mandible_image&gt;</em>, as stated in the variable name, refers to the file of the input mandible image, so users should replace this value with the filename (eg: mandibleA.nii),</li>
 <li><em>thr</em> is the setting to the executing function, in this case the value following this will set the value to the minimum threshold,</li>
-<li><em>&lt;user_decided_threshold_value&gt;</em> is thus a numerical value the user assigned to be the minimum threshold,</li>
+<li><em>&lt;user_decided_threshold_value&gt;</em> is a numerical value the user assigns to be the minimum threshold,</li>
 <li><em>uthr</em> is also the setting to the executing function, stands for &#8220;<em>upper threshold</em>&#8221;, the value following this will set the value to the maximum / upper threshold limit,</li>
 <li><em>3000</em> is the upper threshold limit,</li>
-<li><em>&lt;output_thresholded_mandible_image&gt;</em>, as the variable name has stated, this will be the output of the above setting, user should enter the desired output filename here (eg: mandibleThresholded.nii)</li>
+<li><em>&lt;output_thresholded_mandible_image&gt;</em>, as stated in the variable name, this will be the output of the above setting, users should enter the desired output filename here (eg: mandibleThresholded.nii)</li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Also refer to related documentations of functions and commands described in this documentation for detailed explanation.</p>
+<p class="last">Refer to related documentations of functions and commands described in this documentation for detailed explanation.</p>
 </div>
 <div class="section" id="input-preparation">
 <h2>Input Preparation<a class="headerlink" href="#input-preparation" title="Permalink to this headline">¶</a></h2>
-<p>Before starting the SAMS pipeline, the desire input files should be converted from its DICOM series into Analyze75 file format [.hdr/.img] or equivalent.</p>
-<p>In Analyze 12.0, user will inspect the scan and collect the threshold needed to remove all non-osseous tissues from the 3D renderings.</p>
+<p>Before starting the SAMS pipeline, the desired input files should be converted from DICOM series into Analyze75 file format [.hdr/.img] or equivalent format.</p>
+<p>In Analyze 12.0, user needs to inspect the scan and collect the threshold needed to remove all non-osseous tissues from the 3D renderings.</p>
 <p>If an alternative software is used for inspection and threshold collection, the input file can also be saved as NIfTI file format [.nii or .nii.gz].</p>
 <p>The following pre-processing step accepts both Analyze75 and NIfTI file format as the input <em>test scan.</em></p>
 </div>
@@ -216,7 +216,7 @@
 <li>Find a threshold value in Hounsfield Unit (HU) that provides best quality of the mandible.</li>
 <li>Find the minimal enclosing box that contains the mandible.</li>
 </ol>
-<p>In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-300 HU.</p>
+<p>In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-350 HU.</p>
 <div class="figure" id="id1">
 <img alt="_images/ThresholdSample.png" src="_images/ThresholdSample.png" />
 <p class="caption"><span class="caption-text">From left to right: Effect of increasing minimum threshold values on a 3D rendering to allow best visualization of boney structure.</span></p>
@@ -224,7 +224,10 @@
 <p>Next, user will record the smallest and largest slice number of the image in all X, Y and Z direction.
 These dimensions information will be used as input values to crop the image into its minimal enclosing box:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ fslroi &lt;trim_image&gt; &lt;input_image&gt; &lt;xlower&gt; &lt;xupper&gt; &lt;ylower&gt; &lt;yupper&gt; &lt;zlower&gt; &lt;zupper&gt;
-$ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
+</pre></div>
+</div>
+<p>After cropping the image the following is used to set origin of the image to 0 0 0</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
 </pre></div>
 </div>
 <p>The image will be then be thresholded according to the threshold value the user collected:</p>
@@ -233,9 +236,9 @@ $ SVAdjustVoxelspace -in &lt;trim_image&gt; -origin 0 0 0
 </div>
 <div class="figure" id="id2">
 <img alt="_images/RawThreshold.jpg" src="_images/RawThreshold.jpg" />
-<p class="caption"><span class="caption-text">Effect of applying a threshold value to a cropped <em>test scan</em> in all anatomical orientation. Top row: cropped, raw <em>test</em> scan; Bottom row: after applying threshold.</span></p>
+<p class="caption"><span class="caption-text">Effect of applying a threshold value to a cropped <em>test scan</em> in all anatomical orientation. Top panel: cropped, raw <em>test</em> scan; Bottom panel: scan of boney mandible after applying the threshold.</span></p>
 </div>
-<p>Shown below are illustrations of cropping input <em>test scan</em> down to the minimum enclosing box containing a complete mandibular structure:</p>
+<p>Shown below are illustrations of cropping input <em>test scan</em> to the minimum enclosing box containing a complete mandibule:</p>
 <div class="figure" id="id3">
 <img alt="_images/Cropped3D.jpg" src="_images/Cropped3D.jpg" />
 <p class="caption"><span class="caption-text">Cropping a 512x512x660 volume into its minimal enclosing box of the dimension 332x270x262.</span></p>
@@ -271,7 +274,7 @@ The 54 segmented mandibles are then composited and normalized to generate the fi
 <li>Affine metric type = MSQ</li>
 <li>Number of affine iterations = 2000 x 2000 x 2000</li>
 </ol>
-<p class="last">These values were obtained after parameter sweeping performed in the lab. Users can alter the values according to their targeted reference templates&#8217; age range and demographics.</p>
+<p class="last">These values were obtained after parameter sweeping was performed in our VTLab. Users can alter the values according to their targeted reference templates&#8217; age range and demographics. For detailed explanation on each of the parameter functions, refer to the <a class="reference external" href="http://stnava.github.io/ANTsDoc">ANTs documentation</a>.</p>
 </dd>
 </dl>
 <p>Followed by</p>
@@ -307,8 +310,8 @@ $ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;t
 </div>
 <div class="section" id="post-processing">
 <h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
-<p>Once all compositing and averaging are completed, generating one final mandible, this mandible is viewed in MATLAB.
-In our case, the output from step 2 is in NIfTI file format:</p>
+<p>Once all compositing and averaging are completed, a single final composite mandible is generated. This composite mandible is viewed in MATLAB to determine if further manual touch-up is needed.
+In our case, the output from step 2 is in NIfTI file format so the <em>load_nii</em> function from the <a href="#id7"><span class="problematic" id="id8">`Tools for NIfTI and ANALYZE image&lt;http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image&gt;`_</span></a> package on MathWorks File Exchange is used to load accordingly</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nii</span> <span class="o">=</span> <span class="n">load_nii</span><span class="p">(</span><span class="s1">&#39;&lt;allModels&gt;.nii.gz&#39;</span><span class="p">)</span>
 <span class="n">mandible</span> <span class="o">=</span> <span class="n">isosurface</span><span class="p">(</span><span class="n">nii</span><span class="o">.</span><span class="n">img</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -320,22 +323,22 @@ In our case, the output from step 2 is in NIfTI file format:</p>
 </pre></div>
 </div>
 <div class="figure" id="id6">
-<a class="reference internal image-reference" href="_images/M227matlabrender.png"><img alt="_images/M227matlabrender.png" src="_images/M227matlabrender.png" style="width: 572.4px; height: 502.8px;" /></a>
+<a class="reference internal image-reference" href="_images/M227matlabrender.png"><img alt="_images/M227matlabrender.png" src="_images/M227matlabrender.png" style="width: 477.0px; height: 419.0px;" /></a>
 <p class="caption"><span class="caption-text">3D mandible model rendered in MATLAB using a color matrix value of [0.75 0.75 0.70].</span></p>
 </div>
 <p>Rotate the mandible to inspect any regions requiring further enhancement</p>
-<p>For more MATLAB parameters and specifications, refer to the MATLAB Documentation on <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/patch-properties.html">Patch Properties</a>.</p>
+<p>For more MATLAB parameters and specifications, refer to MATLAB documentation on <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/patch-properties.html">Patch Properties</a>.</p>
 <div class="section" id="manual-editing">
 <h3>Manual Editing<a class="headerlink" href="#manual-editing" title="Permalink to this headline">¶</a></h3>
 <p>If the mandible needs to be edited manually, the NIfTI file will be padded into its original dimension using AFNI.
 Once padded, the mandible will be imported back into Analyze 12.0 for manual editing.</p>
 <p>The following are used only if the user is using Analyze 12.0 as the editing software.</p>
-<p>Depending on the set up of pre-processing the values for dimensions varies:</p>
+<p>The padding values needed here are values recorded during pre-processing&#8217;s cropping step:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ 3dZeropad -I &lt;zlower&gt; -S &lt;zupper&gt; -P &lt;ylower&gt; -A &lt;yupper&gt; -L &lt;xlower&gt; -R &lt;xupper&gt; -prefix &lt;outputName&gt; &lt;allModels&gt;.nii.gz
 $ 3dAFNItoANALYZE &lt;outputName&gt; &lt;outputName&gt;+orig
 </pre></div>
 </div>
-<p>When reloading the scan into the Analyze, user should flip the scan in X direction.</p>
+<p>When reloading the scan into the Analyze, users should flip the scan in X direction.</p>
 </div>
 </div>
 </div>
@@ -362,7 +365,7 @@ $ 3dAFNItoANALYZE &lt;outputName&gt; &lt;outputName&gt;+orig
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Vocal Tract Development Lab.
+        &copy; Copyright 2017, Vocal Tract Development Laboratory.
 
     </p>
   </div>

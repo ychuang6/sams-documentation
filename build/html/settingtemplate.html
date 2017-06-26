@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up Reference Templates &mdash; samspipeline 1.0 documentation</title>
+  <title>Setting up Reference Templates &mdash; Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="samspipeline 1.0 documentation" href="index.html"/>
+    <link rel="top" title="Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation" href="index.html"/>
         <link rel="next" title="Basic Workflow" href="pipeline.html"/>
         <link rel="prev" title="Installation" href="installation.html"/> 
 
@@ -56,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> samspipeline
+            <a href="index.html" class="icon icon-home"> Semi-Automatic Mandible Segmentation (SAMS) Pipeline
           
 
           
@@ -100,7 +100,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html#acknowledgement">Acknowledgement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
 </ul>
@@ -117,7 +119,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">samspipeline</a>
+          <a href="index.html">Semi-Automatic Mandible Segmentation (SAMS) Pipeline</a>
         
       </nav>
 
@@ -168,15 +170,15 @@
             
   <div class="section" id="setting-up-reference-templates">
 <h1>Setting up Reference Templates<a class="headerlink" href="#setting-up-reference-templates" title="Permalink to this headline">¶</a></h1>
-<p>The SAMS pipeline requires a set of CT images and their respective segmented 3D mandible models as the <strong>reference templates</strong>. These templates are the CT image (<em>template scan</em>) that the <em>test scan</em> will be mapped on to during the image registration process. Their respective 3D mandible models are the deformable models used to create the automatically-segmented mandibles for each registration. The VTLab built our templates as shown in the rest of this documentation.</p>
+<p>The SAMS pipeline requires a set of CT images and their respective segmented 3D mandible models as the <strong>reference templates</strong>. These templates are the CT image (<em>template scan</em>) that the <em>test scan</em> will be mapped on to during the image registration process. Their respective 3D mandible models are the deformable models used to create the automatically-segmented mandibles for each registration. The following sections showed steps the VTLab implemented to build the <em>reference templates</em> needed for this pipeline.</p>
 <div class="section" id="template-selection">
 <h2>Template Selection<a class="headerlink" href="#template-selection" title="Permalink to this headline">¶</a></h2>
-<p>We have selected 54 <em>reference templates</em> (27 Males, 27 Females) consists of typically-developing individuals from birth to age of 20 years old. Each of the <em>reference templates</em> have the following prepared and pre-processed:</p>
+<p>The 54 <em>reference templates</em> (27 Males, 27 Females) we selected consisted of typically-developing individuals from birth to age of 20 years old. Each of the <em>reference templates</em> have the following components prepared and pre-processed:</p>
 <ol class="arabic simple">
-<li>CT Image (<em>Template Scan</em> in the rest of this documentation)</li>
-<li>3D Mandible Model (<em>Template Model</em> in the rest of this documentation)</li>
+<li>CT Image (Referred to as <em>Template Scan</em> in the rest of this documentation)</li>
+<li>3D Mandible Model (Referred to as <em>Template Model</em> in the rest of this documentation)</li>
 </ol>
-<p>This set of <em>reference templates</em> can be altered according to user preferences and research goals. Parameters presented in this documentation were optimized based on this set of <em>reference templates</em>. User should perform parameter optimization to allow for best-performance if changes to the reference templates were made. Refer to Basic Workflow section for details of parameters set for this pipeline.</p>
+<p>This set of <em>reference templates</em> can be altered according to user preferences and research goals. Parameters presented in this documentation were optimized based on this set of <em>reference templates</em>. The user should perform parameter optimization to allow for best-performance of the reference templates built. Refer to Basic Workflow section for details of parameters set for this pipeline.</p>
 </div>
 <div class="section" id="template-preparation-process">
 <h2>Template Preparation Process<a class="headerlink" href="#template-preparation-process" title="Permalink to this headline">¶</a></h2>
@@ -206,7 +208,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Vocal Tract Development Lab.
+        &copy; Copyright 2017, Vocal Tract Development Laboratory.
 
     </p>
   </div>

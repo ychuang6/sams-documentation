@@ -1,9 +1,9 @@
 Basic Workflow
 ==============
 
-After setting up the required dependencies and *reference templates*, you are ready to segment a 3D mandible from an input raw CT image (*test scan*). 
+After setting up the required dependencies and *reference templates*, users may begin segmenting 3D mandibles from an input raw CT image (*test scan*). 
 
-Here we are going through all commands involved in the pipelines. Variable names/values/files intended for users to modify / decide are enclosed between **< >**. 
+What follows is a list of all commands used in the SAMS pipeline. Variable names/values/files needed to be modified by users are enclosed between **< ... >**. 
 
 For example, below is a command applying threshold to a mandible image
 
@@ -14,22 +14,22 @@ For example, below is a command applying threshold to a mandible image
 where 
 
 	- *fslmaths* is the executing function,
-	- *<input_mandible_image>*, as the variable name has stated, it refer to the file of the input mandible image, so user should replace this value with the filename (eg: mandibleA.nii), 
+	- *<input_mandible_image>*, as stated in the variable name, refers to the file of the input mandible image, so users should replace this value with the filename (eg: mandibleA.nii), 
 	- *thr* is the setting to the executing function, in this case the value following this will set the value to the minimum threshold,
-	- *<user_decided_threshold_value>* is thus a numerical value the user assigned to be the minimum threshold,
+	- *<user_decided_threshold_value>* is a numerical value the user assigns to be the minimum threshold,
 	- *uthr* is also the setting to the executing function, stands for "*upper threshold*", the value following this will set the value to the maximum / upper threshold limit,
 	- *3000* is the upper threshold limit,
-	- *<output_thresholded_mandible_image>*, as the variable name has stated, this will be the output of the above setting, user should enter the desired output filename here (eg: mandibleThresholded.nii)
+	- *<output_thresholded_mandible_image>*, as stated in the variable name, this will be the output of the above setting, users should enter the desired output filename here (eg: mandibleThresholded.nii)
 
 
-.. note:: Also refer to related documentations of functions and commands described in this documentation for detailed explanation. 
+.. note:: Refer to related documentations of functions and commands described in this documentation for detailed explanation. 
  
 
 Input Preparation
 -----------------
-Before starting the SAMS pipeline, the desire input files should be converted from its DICOM series into Analyze75 file format [.hdr/.img] or equivalent.
+Before starting the SAMS pipeline, the desired input files should be converted from DICOM series into Analyze75 file format [.hdr/.img] or equivalent format.
 
-In Analyze 12.0, user will inspect the scan and collect the threshold needed to remove all non-osseous tissues from the 3D renderings. 
+In Analyze 12.0, user needs to inspect the scan and collect the threshold needed to remove all non-osseous tissues from the 3D renderings. 
 
 If an alternative software is used for inspection and threshold collection, the input file can also be saved as NIfTI file format [.nii or .nii.gz]. 
 
@@ -44,7 +44,7 @@ In pre-processing, the input *test scan* will be inspected by user to:
 2. Find the minimal enclosing box that contains the mandible. 
 
 
-In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-300 HU.
+In Analyze 12.0, the threshold value is determined by adjusting for the minimum threshold that will render a 3D mandible free of all non-osseous tissue. Typical threshold range between 80-350 HU.
 
 .. figure:: images/ThresholdSample.png
 	
@@ -55,7 +55,11 @@ Next, user will record the smallest and largest slice number of the image in all
 These dimensions information will be used as input values to crop the image into its minimal enclosing box::
 
 	$ fslroi <trim_image> <input_image> <xlower> <xupper> <ylower> <yupper> <zlower> <zupper>
+
+After cropping the image the following is used to set origin of the image to 0 0 0 ::
+
 	$ SVAdjustVoxelspace -in <trim_image> -origin 0 0 0 
+
 
 The image will be then be thresholded according to the threshold value the user collected::
 
@@ -63,10 +67,10 @@ The image will be then be thresholded according to the threshold value the user 
 
 .. figure:: images/RawThreshold.jpg
 
-	Effect of applying a threshold value to a cropped *test scan* in all anatomical orientation. Top row: cropped, raw *test* scan; Bottom row: after applying threshold. 
+	Effect of applying a threshold value to a cropped *test scan* in all anatomical orientation. Top panel: cropped, raw *test* scan; Bottom panel: scan of boney mandible after applying the threshold. 
 
 
-Shown below are illustrations of cropping input *test scan* down to the minimum enclosing box containing a complete mandibular structure: 
+Shown below are illustrations of cropping input *test scan* to the minimum enclosing box containing a complete mandibule: 
 
 .. figure:: images/Cropped3D.jpg
 
@@ -106,7 +110,7 @@ The ANTS parameters listed here are as follow:
 	5. Affine metric type = MSQ
 	6. Number of affine iterations = 2000 x 2000 x 2000
 
-	These values were obtained after parameter sweeping performed in the lab. Users can alter the values according to their targeted reference templates' age range and demographics. 
+	These values were obtained after parameter sweeping was performed in our VTLab. Users can alter the values according to their targeted reference templates' age range and demographics. For detailed explanation on each of the parameter functions, refer to the `ANTs documentation <http://stnava.github.io/ANTsDoc>`_. 
 
 Followed by ::
 
@@ -118,6 +122,7 @@ Binarization is performed to ensure that segmented mandibles are in binary form 
 
 	$ c3d <affineInverseWarp>.nii.gz -binarize -o <segmented_mandible>.nii.gz
 	
+
 Compositing
 ~~~~~~~~~~~
 All segmented mandibles from Automatic Segmentation steps will be compiled into one single composite and normalized::
@@ -133,8 +138,8 @@ All segmented mandibles from Automatic Segmentation steps will be compiled into 
 
 Post-processing
 ---------------
-Once all compositing and averaging are completed, generating one final mandible, this mandible is viewed in MATLAB.
-In our case, the output from step 2 is in NIfTI file format::
+Once all compositing and averaging are completed, a single final composite mandible is generated. This composite mandible is viewed in MATLAB to determine if further manual touch-up is needed.
+In our case, the output from step 2 is in NIfTI file format so the *load_nii* function from the `Tools for NIfTI and ANALYZE image<http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image>`_ package on MathWorks File Exchange is used to load accordingly ::
  
 	 nii = load_nii('<allModels>.nii.gz')
 	 mandible = isosurface(nii.img,0.5)
@@ -146,13 +151,13 @@ Now you can view the 3D mandible::
 	 camlight
 
 .. figure:: images/M227matlabrender.png
-	:scale: 60%
+	:scale: 50%
 
 	3D mandible model rendered in MATLAB using a color matrix value of [0.75 0.75 0.70].
 
 Rotate the mandible to inspect any regions requiring further enhancement 
 
-For more MATLAB parameters and specifications, refer to the MATLAB Documentation on `Patch Properties <https://www.mathworks.com/help/matlab/ref/patch-properties.html>`_.
+For more MATLAB parameters and specifications, refer to MATLAB documentation on `Patch Properties <https://www.mathworks.com/help/matlab/ref/patch-properties.html>`_.
 
 Manual Editing
 ~~~~~~~~~~~~~~
@@ -161,12 +166,12 @@ Once padded, the mandible will be imported back into Analyze 12.0 for manual edi
 
 The following are used only if the user is using Analyze 12.0 as the editing software. 
 
-Depending on the set up of pre-processing the values for dimensions varies::
+The padding values needed here are values recorded during pre-processing's cropping step: ::
 	
 	$ 3dZeropad -I <zlower> -S <zupper> -P <ylower> -A <yupper> -L <xlower> -R <xupper> -prefix <outputName> <allModels>.nii.gz
 	$ 3dAFNItoANALYZE <outputName> <outputName>+orig
 
-When reloading the scan into the Analyze, user should flip the scan in X direction.
+When reloading the scan into the Analyze, users should flip the scan in X direction.
 
 
 

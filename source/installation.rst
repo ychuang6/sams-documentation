@@ -9,7 +9,7 @@ The SAMS pipeline is set up to run in a Linux environment (Mac is possible). It 
 
 Executable Software Dependencies
 --------------------------------
-The following software are needed to work with the SAMS pipeline:
+The following software are needed to operate the SAMS pipeline:
 
 	* AFNI_ - Analysis of Functional NeuroImages
 	* Analyze_- Analyze 12.0 
@@ -20,7 +20,7 @@ The following software are needed to work with the SAMS pipeline:
 
 Alternatives
 ~~~~~~~~~~~~
-The following are a list of open-source software that can be used as alternatives to Analyze 12.0 and/or MATLAB:
+The following is a list of open-source software that can be used as alternatives to Analyze 12.0 and/or MATLAB:
 
 	* ImageJ_
 	* ITKSNAP_
@@ -30,8 +30,8 @@ The following are a list of open-source software that can be used as alternative
 
 Cluster Computing Environment
 -----------------------------
-This pipeline is currently designed to work with cluster computing for best performance.
-The Vocal Tract Development Lab employs High Throughput Computing (HTC) resources from the `Center for High Throughput Computing <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison. It can be adapted to use on other cluster computing environment for users who may have access to similar resources too.
+This pipeline is designed to work with cluster computing for optimal performance.
+The Vocal Tract Development Lab employs High Throughput Computing (HTC) resources from the `Center for High Throughput Computing <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison. It can be adapted to use on other cluster computing environment for users who may have access to similar resources.
 
 
 

@@ -45,9 +45,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'samspipeline'
-copyright = u'2017, Vocal Tract Development Lab'
-author = u'Vocal Tract Development Lab'
+project = u'Semi-Automatic Mandible Segmentation (SAMS) Pipeline'
+copyright = u'2017, Vocal Tract Development Laboratory'
+author = u'Vocal Tract Development Laboratory'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
