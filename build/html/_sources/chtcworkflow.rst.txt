@@ -1,10 +1,11 @@
 ```````````````````````````
 Cluster Computing: Workflow
 ```````````````````````````
+The explanation and examples provided in this section are HTCondor-specific terminologies and components, consisting extensive excerpts from the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_. The description provided here are brief snippets of their actual and potential functions. Refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanations. All HTCondor functions and commands displayed here are work of the `Center for High Throughput Computing <https://chtc.cs.wisc.edu>`_, Computer Sciences Department, University of Wisconsins-Madison, Madison, WI. 
+
 -----------
 Terminology
 -----------
-The list of terminology provided below contains excerpts from the HTCondor Manual. The descriptions provided here are brief snippets of their actual and potential functions. Refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanations.
 
 **JOB** :
 The *JOB* keyword specifies a job to be managed by HTCondor. This job is usually a *submit file*, which will be described later in the upcoming section. ::
@@ -19,7 +20,7 @@ The *PARENT* and *CHILD* keywords specify the dependencies within the DAG. A par
 
 
 **DAG** :
-Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor Manual for more information.
+Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor Manual_ for more information.
 A DAG file will be submitted using the tool *condor_submit_dag* by running the syntax as follow: ::
 
    > condor_submit_dag <dagfilename>.dag
@@ -58,7 +59,7 @@ A simple example of a *DAG* file incorporating *VARS*: ::
    queue
 
 .. note::
- See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor Manual for detailed explanation. 
+ See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor Manual_ for detailed explanation. 
 
 
 **SPLICE** :
@@ -199,7 +200,7 @@ Scripts used are ::
         mandible.wrapper.sh
         mandible.registration.sh
 
-The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation <http://samsdoc.readthedocs.io/en/latest/pipeline.html#automatic-segmentation>`_ section.
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation <http://sams.readthedocs.io/en/latest/pipelineworkflow.html#automatic-segmentation>`_ section.
 
 
 Compositing
@@ -211,12 +212,12 @@ Scripts used are ::
         weighted-averaging.sh
         mandible.unpack.sh
 
-The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing>`_ section.
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://sams.readthedocs.io/en/latest/pipelineworkflow.html#compositing>`_ section.
 
 
 *Samples scripts will be provided here in late July*
 
 
-
+.. _Manual: http://research.cs.wisc.edu/htcondor/
 
 

@@ -179,9 +179,9 @@
             
   <div class="section" id="cluster-computing-workflow">
 <h1>Cluster Computing: Workflow<a class="headerlink" href="#cluster-computing-workflow" title="Permalink to this headline">¶</a></h1>
+<p>The explanation and examples provided in this section are HTCondor-specific terminologies and components, consisting extensive excerpts from the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a>. The description provided here are brief snippets of their actual and potential functions. Refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a> for detailed explanations. All HTCondor functions and commands displayed here are work of the <a class="reference external" href="https://chtc.cs.wisc.edu">Center for High Throughput Computing</a>, Computer Sciences Department, University of Wisconsins-Madison, Madison, WI.</p>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
-<p>The list of terminology provided below contains excerpts from the HTCondor Manual. The descriptions provided here are brief snippets of their actual and potential functions. Refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a> for detailed explanations.</p>
 <p><strong>JOB</strong> :
 The <em>JOB</em> keyword specifies a job to be managed by HTCondor. This job is usually a <em>submit file</em>, which will be described later in the upcoming section.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">JobName</span> <span class="n">SubmitFileName</span>
@@ -193,7 +193,7 @@ The <em>PARENT</em> and <em>CHILD</em> keywords specify the dependencies within 
 </pre></div>
 </div>
 <p><strong>DAG</strong> :
-Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor Manual for more information.
+Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor <a class="reference external" href="http://research.cs.wisc.edu/htcondor/">Manual</a> for more information.
 A DAG file will be submitted using the tool <em>condor_submit_dag</em> by running the syntax as follow:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">condor_submit_dag</span> <span class="o">&lt;</span><span class="n">dagfilename</span><span class="o">&gt;.</span><span class="n">dag</span>
 </pre></div>
@@ -232,7 +232,7 @@ The <em>VARS</em> keyword allows variables specific to a <em>JOB</em> node&#8217
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor Manual for detailed explanation.</p>
+<p class="last">See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor <a class="reference external" href="http://research.cs.wisc.edu/htcondor/">Manual</a> for detailed explanation.</p>
 </div>
 <p><strong>SPLICE</strong> :
 A splice is an instance of a subgraph which is specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT-CHILD dependencies.</p>
@@ -364,7 +364,7 @@ The two scripts consist of a &#8220;wrapper&#8221; script and an executing scrip
 <span class="n">mandible</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The executing script here will consist of commands specified in <a class="reference external" href="http://samsdoc.readthedocs.io/en/latest/pipeline.html#automatic-segmentation">Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation</a> section.</p>
+<p>The executing script here will consist of commands specified in <a class="reference external" href="http://sams.readthedocs.io/en/latest/pipelineworkflow.html#automatic-segmentation">Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation</a> section.</p>
 </div>
 <div class="section" id="compositing">
 <h4>Compositing<a class="headerlink" href="#compositing" title="Permalink to this headline">¶</a></h4>
@@ -374,7 +374,7 @@ The two scripts consist of a &#8220;wrapper&#8221; script and an executing scrip
 <span class="n">mandible</span><span class="o">.</span><span class="n">unpack</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The executing script here will consist of commands specified in <a class="reference external" href="http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing">Basic Workflow/Automatic Segmentation and Compositing/Compositing</a> section.</p>
+<p>The executing script here will consist of commands specified in <a class="reference external" href="http://sams.readthedocs.io/en/latest/pipelineworkflow.html#compositing">Basic Workflow/Automatic Segmentation and Compositing/Compositing</a> section.</p>
 <p><em>Samples scripts will be provided here in late July</em></p>
 </div>
 </div>
