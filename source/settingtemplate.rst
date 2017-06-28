@@ -10,7 +10,8 @@ The 54 *reference templates* (27 Males, 27 Females) we selected consisted of typ
 1. CT Image (Referred to as *Template Scan* in the rest of this documentation)
 2. 3D Mandible Model (Referred to as *Template Model* in the rest of this documentation)
 
-This set of *reference templates* can be altered according to user preferences and research goals. Parameters presented in this documentation were optimized based on this set of *reference templates*. The user should perform parameter optimization to allow for best-performance of the reference templates built. Refer to Basic Workflow section for details of parameters set for this pipeline.
+This set of *reference templates* can be altered according to user preferences and research goals. Parameters presented in this documentation were optimized based on this set of *reference templates*. The user should perform parameter optimization to allow for best-performance of the reference templates built. 
+
 
 Template Preparation Process
 ----------------------------
