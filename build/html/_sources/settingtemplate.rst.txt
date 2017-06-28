@@ -19,3 +19,4 @@ Template Preparation Process
 The *template scans* are first processed through a cycle of registration pipeline with their 3D mandible models (that are segmented manually prior) as the deformable models, generating a set of automatically-segmented mandible models for each of the *template scan*. The segmented mandible models are then post-processed for enhancement and eventually used as the final *template models* in the SAMS pipeline. 
 
 
+<insert image>
