@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Cluster Computing Workflow" href="chtc.html"/>
+        <link rel="next" title="Cluster Computing: Overview" href="introchtc.html"/>
         <link rel="prev" title="Setting up Reference Templates" href="settingtemplate.html"/> 
 
   
@@ -90,7 +90,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
@@ -108,8 +109,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introchtc.html">Cluster Computing: Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chtcworkflow.html">Cluster Computing: Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html#acknowledgement">Acknowledgement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -164,7 +165,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pipeline.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pipelineworkflow.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -311,7 +312,7 @@ $ fslmaths &lt;allModels&gt;.nii.gz -thr &lt;normalization_value&gt; -uthr &lt;t
 <div class="section" id="post-processing">
 <h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
 <p>Once all compositing and averaging are completed, a single final composite mandible is generated. This composite mandible is viewed in MATLAB to determine if further manual touch-up is needed.
-In our case, the output from step 2 is in NIfTI file format so the <em>load_nii</em> function from the <a href="#id7"><span class="problematic" id="id8">`Tools for NIfTI and ANALYZE image&lt;http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image&gt;`_</span></a> package on MathWorks File Exchange is used to load accordingly</p>
+In our case, the output from step 2 is in NIfTI file format so the <em>load_nii</em> function from the <a class="reference external" href="http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image">Tools for NIfTI and ANALYZE image</a> package on MathWorks File Exchange is used to load accordingly</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nii</span> <span class="o">=</span> <span class="n">load_nii</span><span class="p">(</span><span class="s1">&#39;&lt;allModels&gt;.nii.gz&#39;</span><span class="p">)</span>
 <span class="n">mandible</span> <span class="o">=</span> <span class="n">isosurface</span><span class="p">(</span><span class="n">nii</span><span class="o">.</span><span class="n">img</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -353,7 +354,7 @@ $ 3dAFNItoANALYZE &lt;outputName&gt; &lt;outputName&gt;+orig
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="chtc.html" class="btn btn-neutral float-right" title="Cluster Computing Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="introchtc.html" class="btn btn-neutral float-right" title="Cluster Computing: Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="settingtemplate.html" class="btn btn-neutral" title="Setting up Reference Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

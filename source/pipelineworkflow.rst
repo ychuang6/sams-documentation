@@ -139,7 +139,7 @@ All segmented mandibles from Automatic Segmentation steps will be compiled into 
 Post-processing
 ---------------
 Once all compositing and averaging are completed, a single final composite mandible is generated. This composite mandible is viewed in MATLAB to determine if further manual touch-up is needed.
-In our case, the output from step 2 is in NIfTI file format so the *load_nii* function from the `Tools for NIfTI and ANALYZE image<http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image>`_ package on MathWorks File Exchange is used to load accordingly ::
+In our case, the output from step 2 is in NIfTI file format so the *load_nii* function from the `Tools for NIfTI and ANALYZE image <http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image>`_ package on MathWorks File Exchange is used to load accordingly ::
  
 	 nii = load_nii('<allModels>.nii.gz')
 	 mandible = isosurface(nii.img,0.5)

@@ -89,13 +89,14 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.html">Cluster Computing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelineworkflow.html">Basic Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introchtc.html">Cluster Computing: Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chtcworkflow.html">Cluster Computing: Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html#acknowledgement">Acknowledgement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -166,14 +167,12 @@
   <div class="section" id="welcome-to-the-documentation-for-semi-automatic-mandible-segmentation-sams-pipeline">
 <h1>Welcome to the documentation for Semi-Automatic Mandible Segmentation (SAMS) Pipeline<a class="headerlink" href="#welcome-to-the-documentation-for-semi-automatic-mandible-segmentation-sams-pipeline" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="semi-automatic-mandible-segmentation-sams-pipeline-introduction">
-<h1>Semi-Automatic Mandible Segmentation (SAMS) Pipeline: Introduction<a class="headerlink" href="#semi-automatic-mandible-segmentation-sams-pipeline-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>This semi-automatic mandible segmentation (SAMS) pipeline was developed at our <a class="reference external" href="http://www.waisman.wisc.edu/vocal/">Vocal Tract Development Lab</a> for the purpose of generating 3D mandible/jaw objects from head and neck multi-detector Computed Tomography (MDCT) images. The ultimate goal of this pipeline is to accelerate the process of consistently segmenting large number of 3D mandibles needed for analysis to quantify morphological changes of the mandible during the lifespan but more specifically during the first two decades of life. This pipeline is semi-automatic with the initial (pre-processing) and final (post-processing) steps require manual interventions.</p>
 <p>The purpose of this documentation is to provide the background and a walkthrough of the SAMS pipeline.</p>
-</div>
-<div class="section" id="contents">
-<h1>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#background">Background</a></li>
@@ -183,7 +182,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#operating-system-requirements">Operating System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#executable-software-dependencies">Executable Software Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#executable-software-dependencies">Executable Software Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#alternatives">Alternatives</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#cluster-computing-environment">Cluster Computing Environment</a></li>
 </ul>
 </li>
@@ -192,22 +194,32 @@
 <li class="toctree-l2"><a class="reference internal" href="settingtemplate.html#template-preparation-process">Template Preparation Process</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Basic Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#input-preparation">Input Preparation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#pre-processing">Pre-processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#automatic-segmentation-and-compositing">Automatic Segmentation and Compositing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#post-processing">Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelineworkflow.html">Basic Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelineworkflow.html#input-preparation">Input Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelineworkflow.html#pre-processing">Pre-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelineworkflow.html#automatic-segmentation-and-compositing">Automatic Segmentation and Compositing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelineworkflow.html#automatic-segmentation">Automatic Segmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineworkflow.html#compositing">Compositing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chtc.html">Cluster Computing Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chtc.html#workflow-map">Workflow Map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chtc.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelineworkflow.html#post-processing">Post-processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelineworkflow.html#manual-editing">Manual Editing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="components.html">Cluster Computing Components</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="components.html#dag-file">DAG File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="components.html#submit-file">Submit File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="components.html#executing-scripts">Executing Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introchtc.html">Cluster Computing: Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introchtc.html#workflow-map">Workflow Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chtcworkflow.html">Cluster Computing: Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chtcworkflow.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chtcworkflow.html#main-components">Main Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chtcworkflow.html#dag-file">DAG File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chtcworkflow.html#submit-file">Submit File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chtcworkflow.html#executing-scripts">Executing Scripts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
