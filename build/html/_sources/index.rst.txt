@@ -13,9 +13,11 @@ This semi-automatic mandible segmentation (SAMS) pipeline was developed at our `
 
 The purpose of this documentation is to provide the background and a walkthrough of the SAMS pipeline. 
 
+Table of Contents
+=================
 
 .. toctree::
-   :caption: Table of Contents
+   :caption: Contents
    :maxdepth: 3
    
    overview

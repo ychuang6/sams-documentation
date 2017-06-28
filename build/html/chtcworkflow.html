@@ -90,7 +90,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
@@ -266,7 +266,6 @@ VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
 VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
 VARS TestA-RefA refModel=“F155-10-00-002-M_trimmed.nii.gz”
 VARS TestA-RefA Now=“&lt;timenow&gt;”
-VARS TestA-RefA useModel=“true”
 ...
 JOB TestA-Compositing Compositing.submit
 VARS TestA-Compositing id=&quot;mandible.compositing&quot;
@@ -278,14 +277,15 @@ PARENT TestA-RefA TestA-RefB ... CHILD TestA-Compositing
 <div class="section" id="submit-file">
 <h3>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h3>
 <p>The HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file is a text file that specifies the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual for detailed explanation).</p>
-<p>The SAMS pipeline will consists of two submit files:</p>
+<p>The SAMS pipeline consists of two main submit files:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Registration.submit - A submit file for the <em>Registration</em> Job</li>
 <li>Compositing.submit - A submit file for the <em>Compositing</em> Job</li>
 </ol>
 </div></blockquote>
-<p>Registration.submit</p>
+<p>The following are samples of the two submit files. Users should replace variables indicated between <em>&lt; ... &gt;</em> accordingly.</p>
+<p><strong>Registration.submit</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
@@ -312,7 +312,7 @@ stream_output=True
 queue
 </pre></div>
 </div>
-<p>Compositing.submit</p>
+<p><strong>Compositing.submit</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
@@ -376,6 +376,7 @@ The two scripts consist of a &#8220;wrapper&#8221; script and an executing scrip
 </pre></div>
 </div>
 <p>The executing script here will consist of commands specified in <a class="reference external" href="http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing">Basic Workflow/Automatic Segmentation and Compositing/Compositing</a> section.</p>
+<p><em>Samples scripts will be provided here in late July</em></p>
 </div>
 </div>
 </div>

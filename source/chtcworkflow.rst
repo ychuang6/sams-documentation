@@ -101,7 +101,6 @@ Sample dag file ::
         VARS TestA-RefA refName=“F155-10-00-002_trimmed.nii.gz”
         VARS TestA-RefA refModel=“F155-10-00-002-M_trimmed.nii.gz”
         VARS TestA-RefA Now=“<timenow>”
-        VARS TestA-RefA useModel=“true”
         ...
         JOB TestA-Compositing Compositing.submit
         VARS TestA-Compositing id="mandible.compositing"
@@ -119,7 +118,9 @@ The SAMS pipeline consists of two main submit files:
  1) Registration.submit - A submit file for the *Registration* Job
  2) Compositing.submit - A submit file for the *Compositing* Job
 
-Registration.submit ::
+The following are samples of the two submit files. Users should replace variables indicated between *< ... >* accordingly.
+
+**Registration.submit** ::  
 
         universe=vanilla
         getenv=True
@@ -146,8 +147,7 @@ Registration.submit ::
 
         queue
 
-
-Compositing.submit ::
+**Compositing.submit** ::
 
         universe=vanilla
         getenv=True
@@ -214,7 +214,7 @@ Scripts used are ::
 The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing>`_ section.
 
 
-
+*Samples scripts will be provided here in late July*
 
 
 
