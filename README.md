@@ -7,3 +7,6 @@ Chuang, Y. J., Doherty, B. M., Adluru, N., Chung, M. K., Vorperian, H. K. (2018)
 
 
 The paper's URL at PubMed: https://www.ncbi.nlm.nih.gov/pubmed/28937489
+
+
+See the active documentation page at: http://samsdoc.readthedocs.io/
