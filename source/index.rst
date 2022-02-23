@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the documentation for Semi-Automatic Mandible Segmentation (SAMS) Pipeline
-=====================================================================================
+Welcome to the documentation for SAMS Pipeline
+==============================================
 
 Introduction
 ==================================================================
@@ -13,10 +13,11 @@ This semi-automatic mandible segmentation (SAMS) pipeline was developed at our `
 
 The purpose of this documentation is to provide the background and a walkthrough of the SAMS pipeline. 
 
-Contents
-========
+Semi-Automatic Mandible Segmentation (SAMS) Pipeline
+====================================================
 
 .. toctree::
+   :caption: Contents
    :maxdepth: 3
    
    overview

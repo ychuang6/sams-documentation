@@ -1,77 +1,37 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cluster Computing: Workflow &mdash; Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Authors" href="authors.html"/>
-        <link rel="prev" title="Cluster Computing: Overview" href="introchtc.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Authors" href="authors.html" />
+    <link rel="prev" title="Cluster Computing: Overview" href="introchtc.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
+        <div class="wy-side-nav-search" >
             <a href="index.html" class="icon icon-home"> Semi-Automatic Mandible Segmentation (SAMS) Pipeline
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 1.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +39,9 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingtemplate.html">Setting up Reference Templates</a></li>
@@ -116,90 +67,53 @@
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Semi-Automatic Mandible Segmentation (SAMS) Pipeline</a>
-        
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Cluster Computing: Workflow</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/chtcworkflow.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="cluster-computing-workflow">
-<h1>Cluster Computing: Workflow<a class="headerlink" href="#cluster-computing-workflow" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="cluster-computing-workflow">
+<h1>Cluster Computing: Workflow<a class="headerlink" href="#cluster-computing-workflow" title="Permalink to this headline"></a></h1>
 <p>The explanation and examples provided in this section are HTCondor-specific terminologies and components, consisting extensive excerpts from the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a>. The description provided here are brief snippets of their actual and potential functions. Refer to the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">HTCondor Manual</a> for detailed explanations. All HTCondor functions and commands displayed here are work of the <a class="reference external" href="https://chtc.cs.wisc.edu">Center for High Throughput Computing</a>, Computer Sciences Department, University of Wisconsins-Madison, Madison, WI.</p>
-<div class="section" id="terminology">
-<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline"></a></h2>
 <p><strong>JOB</strong> :
 The <em>JOB</em> keyword specifies a job to be managed by HTCondor. This job is usually a <em>submit file</em>, which will be described later in the upcoming section.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">JobName</span> <span class="n">SubmitFileName</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">JobName</span> <span class="n">SubmitFileName</span>
 </pre></div>
 </div>
-<p><strong>PARENT ... CHILD</strong> :
+<p><strong>PARENT … CHILD</strong> :
 The <em>PARENT</em> and <em>CHILD</em> keywords specify the dependencies within the DAG. A parent node must be completed successfully before any of the children nodes may be started. We use this to ensure the compositing job starts only after all specified registration jobs are completed.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PARENT</span> <span class="n">ParentJobName</span><span class="o">...</span> <span class="n">CHILD</span> <span class="n">ChildJobName</span><span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PARENT</span> <span class="n">ParentJobName</span><span class="o">...</span> <span class="n">CHILD</span> <span class="n">ChildJobName</span><span class="o">...</span>
 </pre></div>
 </div>
 <p><strong>DAG</strong> :
-Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor <a class="reference external" href="http://research.cs.wisc.edu/htcondor/">Manual</a> for more information.
+Directed Acyclic Graph (DAG) is used to represent a set of computations where the input, output or execution of one or more computations is dependent on one or more other computations. A DAG input file describes the DAG, and further submit description files are used by DAGMan when submitting programs to run under Condor. DAGMan is itself executed as a scheduler universe job within Condor. See HTCondor <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">Manual</a> for more information.
 A DAG file will be submitted using the tool <em>condor_submit_dag</em> by running the syntax as follow:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">condor_submit_dag</span> <span class="o">&lt;</span><span class="n">dagfilename</span><span class="o">&gt;.</span><span class="n">dag</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">condor_submit_dag</span> <span class="o">&lt;</span><span class="n">dagfilename</span><span class="o">&gt;.</span><span class="n">dag</span>
 </pre></div>
 </div>
 <p>A very simple DAG input file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">A</span> <span class="n">A</span><span class="o">.</span><span class="n">sub</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JOB</span> <span class="n">A</span> <span class="n">A</span><span class="o">.</span><span class="n">sub</span>
 <span class="n">JOB</span> <span class="n">B</span> <span class="n">B</span><span class="o">.</span><span class="n">sub</span>
 <span class="n">JOB</span> <span class="n">C</span> <span class="n">C</span><span class="o">.</span><span class="n">sub</span>
 <span class="n">JOB</span> <span class="n">D</span> <span class="n">D</span><span class="o">.</span><span class="n">sub</span>
@@ -208,12 +122,12 @@ A DAG file will be submitted using the tool <em>condor_submit_dag</em> by runnin
 </pre></div>
 </div>
 <p><strong>VARS</strong> :
-The <em>VARS</em> keyword allows variables specific to a <em>JOB</em> node&#8217;s <em>submit file</em> to be defined. The variables hence can be stated in the submit description file as a <em>macro</em>, contained between <strong>$( ... )</strong>. The <em>VARS</em> syntax can be used in a <em>DAG</em> file as follow:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VARS</span> <span class="n">Jobname</span> <span class="n">variablename</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+The <em>VARS</em> keyword allows variables specific to a <em>JOB</em> node’s <em>submit file</em> to be defined. The variables hence can be stated in the submit description file as a <em>macro</em>, contained between <strong>$( … )</strong>. The <em>VARS</em> syntax can be used in a <em>DAG</em> file as follow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARS</span> <span class="n">Jobname</span> <span class="n">variablename</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
 </pre></div>
 </div>
 <p>A simple example of a <em>DAG</em> file incorporating <em>VARS</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># File name: example.dag</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># File name: example.dag</span>
 <span class="c1">#</span>
 <span class="n">JOB</span> <span class="n">A</span> <span class="n">A</span><span class="o">.</span><span class="n">sub</span>
 <span class="n">JOB</span> <span class="n">B</span> <span class="n">B</span><span class="o">.</span><span class="n">sub</span>
@@ -222,8 +136,8 @@ The <em>VARS</em> keyword allows variables specific to a <em>JOB</em> node&#8217
 <span class="n">PARENT</span> <span class="n">A</span> <span class="n">CHILD</span> <span class="n">B</span> <span class="n">C</span>
 </pre></div>
 </div>
-<p><em>JOB</em> A&#8217;s <em>submit file</em> - <strong>A.sub</strong> may then use the above-defined macro <em>testName</em> in an example as follow :</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># File name: A.sub</span>
+<p><em>JOB</em> A’s <em>submit file</em> - <strong>A.sub</strong> may then use the above-defined macro <em>testName</em> in an example as follow :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># File name: A.sub</span>
 <span class="n">executable</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">exe</span>
 <span class="n">log</span>        <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">log</span>
 <span class="n">arguments</span>  <span class="o">=</span> <span class="s2">&quot;$(testName)&quot;</span>
@@ -231,34 +145,34 @@ The <em>VARS</em> keyword allows variables specific to a <em>JOB</em> node&#8217
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor <a class="reference external" href="http://research.cs.wisc.edu/htcondor/">Manual</a> for detailed explanation.</p>
+<p class="admonition-title">Note</p>
+<p>See upcoming section for format of submit files used in the SAMS pipeline. Refer to the HTCondor <a class="reference external" href="https://research.cs.wisc.edu/htcondor/manual">Manual</a> for detailed explanation.</p>
 </div>
 <p><strong>SPLICE</strong> :
 A splice is an instance of a subgraph which is specified in a separate DAG file. This creates a named instance of a DAG as specified in another file as an entity which may have PARENT-CHILD dependencies.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">SpliceName</span> <span class="n">DAGFileName</span> <span class="p">[</span><span class="n">DIR</span> <span class="n">directory</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">SpliceName</span> <span class="n">DAGFileName</span> <span class="p">[</span><span class="n">DIR</span> <span class="n">directory</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>A simple DAG spliced input file is</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">file1</span> <span class="n">dagFile1</span><span class="o">.</span><span class="n">dag</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPLICE</span> <span class="n">file1</span> <span class="n">dagFile1</span><span class="o">.</span><span class="n">dag</span>
 <span class="n">SPLICE</span> <span class="n">file2</span> <span class="n">dagFile2</span><span class="o">.</span><span class="n">dag</span>
 <span class="o">...</span>
 <span class="n">SPLICE</span> <span class="n">file5</span> <span class="n">dagFile5</span><span class="o">.</span><span class="n">dag</span>
 </pre></div>
 </div>
 <p><strong>Gluster</strong> :
-Gluster is a file share maintained by CHTC, and used for files or software that are too large for HTCondor file transfer. See <a class="reference external" href="http://chtc.cs.wisc.edu/file-avail-gluster.shtml">http://chtc.cs.wisc.edu/file-avail-gluster.shtml</a> for explanation.</p>
-<p><em>In progress</em></p>
-</div>
-<div class="section" id="main-components">
-<h2>Main Components<a class="headerlink" href="#main-components" title="Permalink to this headline">¶</a></h2>
+Gluster is a file share maintained by CHTC, and used for files or software that are too large for HTCondor file transfer. See <a class="reference external" href="http://chtc.cs.wisc.edu/file-avail-gluster.shtml">http://chtc.cs.wisc.edu/file-avail-gluster.shtml</a> for explanation. Note: This is an attribute unique only to CHTC and not generally available.
+<em>As of September 25, 2017, Gluster is no longer used for the methodology described in this protocol.</em></p>
+</section>
+<section id="main-components">
+<h2>Main Components<a class="headerlink" href="#main-components" title="Permalink to this headline"></a></h2>
 <p>In this section we go through the main components used in setting up the SAMS pipeline with the CHTC machine pool.
 Shown below is the workflow set up for SAMS pipeline when working with CHTC resources.</p>
 <img alt="_images/SAMSCHTC-Flowchart.png" src="_images/SAMSCHTC-Flowchart.png" />
-<div class="section" id="dag-file">
-<h3>DAG File<a class="headerlink" href="#dag-file" title="Permalink to this headline">¶</a></h3>
+<section id="dag-file">
+<h3>DAG File<a class="headerlink" href="#dag-file" title="Permalink to this headline"></a></h3>
 <p>Sample dag file</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>JOB TestA-RefA Registration.submit
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>JOB TestA-RefA Registration.submit
 VARS TestA-RefA id=“mandible.submit”
 VARS TestA-RefA test_name=“F001-00-01-002”
 VARS TestA-RefA test_model=“F001-00-01-002-M-trim.nii.gz”
@@ -272,20 +186,20 @@ VARS TestA-Compositing id=&quot;mandible.compositing&quot;
 PARENT TestA-RefA TestA-RefB ... CHILD TestA-Compositing
 </pre></div>
 </div>
-</div>
-<div class="section" id="submit-file">
-<h3>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="submit-file">
+<h3>Submit File<a class="headerlink" href="#submit-file" title="Permalink to this headline"></a></h3>
 <p>The HTCondor scheduler relies on a <em>Submit File</em> that communicates everything about our job(s) to the scheduler. A submit file is a text file that specifies the executing job/script, arguments, variables, etc. (Refer to HTCondor Manual for detailed explanation).</p>
 <p>The SAMS pipeline consists of two main submit files:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Registration.submit - A submit file for the <em>Registration</em> Job</li>
-<li>Compositing.submit - A submit file for the <em>Compositing</em> Job</li>
+<li><p>Registration.submit - A submit file for the <em>Registration</em> Job</p></li>
+<li><p>Compositing.submit - A submit file for the <em>Compositing</em> Job</p></li>
 </ol>
 </div></blockquote>
-<p>The following are samples of the two submit files. Users should replace variables indicated between <em>&lt; ... &gt;</em> accordingly.</p>
+<p>The following are samples of the two submit files. Users should replace variables indicated between <em>&lt; … &gt;</em> accordingly.</p>
 <p><strong>Registration.submit</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
 executable=&lt;location&gt;/mandible.wrapper.sh
@@ -312,7 +226,7 @@ queue
 </pre></div>
 </div>
 <p><strong>Compositing.submit</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>universe=vanilla
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>universe=vanilla
 getenv=True
 environment=&quot;ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1&quot;
 executable=&lt;location&gt;/compositing.wrapper.sh
@@ -336,121 +250,84 @@ stream_output=True
 queue
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The line <em>requirements = (HasGluster == true)</em> is a CHTC-only attribute and not generally available.</p>
 </div>
-<div class="section" id="executing-scripts">
-<h3>Executing Scripts<a class="headerlink" href="#executing-scripts" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="executing-scripts">
+<h3>Executing Scripts<a class="headerlink" href="#executing-scripts" title="Permalink to this headline"></a></h3>
 <p>As shown in the flowchart above, there are two executing scripts for the Registration step and Compositing step respectively. These two steps are linked through a PARENT-CHILD dependency listed in the submit DAG file.
-The two scripts consist of a &#8220;wrapper&#8221; script and an executing script.</p>
+The two scripts consist of a “wrapper” script and an executing script.</p>
 <div class="topic">
-<p class="topic-title first">Wrapper</p>
+<p class="topic-title">Wrapper</p>
 <ul class="simple">
-<li>Initiate and make referral to executing environment</li>
-<li>Specify all variables and arguments need for executing script</li>
-<li>Unzip and install software prebuilt on machine</li>
-<li>Run executing script</li>
-<li>Compile output into tarball and export to <em>gluster</em></li>
+<li><p>Initiate and make referral to executing environment</p></li>
+<li><p>Specify all variables and arguments need for executing script</p></li>
+<li><p>Unzip and install software prebuilt on machine</p></li>
+<li><p>Run executing script</p></li>
+<li><p>Compile output into tarball and export to <em>gluster</em></p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">Executing Script</p>
+<p class="topic-title">Executing Script</p>
 <ul class="simple">
-<li>Run software with wrapper-specified arguments</li>
+<li><p>Run software with wrapper-specified arguments</p></li>
 </ul>
 </div>
-<div class="section" id="registration">
-<h4>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h4>
+<section id="registration">
+<h4>Registration<a class="headerlink" href="#registration" title="Permalink to this headline"></a></h4>
 <p>Scripts used are</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mandible</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mandible</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">mandible</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The executing script here will consist of commands specified in <a class="reference external" href="http://sams.readthedocs.io/en/latest/pipelineworkflow.html#automatic-segmentation">Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation</a> section.</p>
-</div>
-<div class="section" id="compositing">
-<h4>Compositing<a class="headerlink" href="#compositing" title="Permalink to this headline">¶</a></h4>
+<p>The executing script here will consist of commands specified in <a class="reference external" href="http://samsdoc.readthedocs.io/en/latest/pipeline.html#automatic-segmentation">Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation</a> section.</p>
+</section>
+<section id="compositing">
+<h4>Compositing<a class="headerlink" href="#compositing" title="Permalink to this headline"></a></h4>
 <p>Scripts used are</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">compositing</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compositing</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">weighted</span><span class="o">-</span><span class="n">averaging</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">mandible</span><span class="o">.</span><span class="n">unpack</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The executing script here will consist of commands specified in <a class="reference external" href="http://sams.readthedocs.io/en/latest/pipelineworkflow.html#compositing">Basic Workflow/Automatic Segmentation and Compositing/Compositing</a> section.</p>
+<p>The executing script here will consist of commands specified in <a class="reference external" href="http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing">Basic Workflow/Automatic Segmentation and Compositing/Compositing</a> section.</p>
 <p><em>Samples scripts will be provided here in late July</em></p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
-           </div>
-           <div class="articleComments">
-            
            </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="authors.html" class="btn btn-neutral float-right" title="Authors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="introchtc.html" class="btn btn-neutral" title="Cluster Computing: Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introchtc.html" class="btn btn-neutral float-left" title="Cluster Computing: Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authors.html" class="btn btn-neutral float-right" title="Authors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, Vocal Tract Development Laboratory.
-
-    </p>
+    <p>&#169; Copyright 2017, Vocal Tract Development Laboratory.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

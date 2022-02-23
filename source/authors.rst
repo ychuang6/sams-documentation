@@ -7,7 +7,8 @@ The development of this pipeline is a culmination of efforts of the following VT
 
 Acknowledgement
 ===============
-We would like to acknowledge Lauren Michael of the `Center of High-Throughput Computing (CHTC) <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison, for the support and guidance she provided throughout this project.
+We would like to acknowledge Lauren Michael of the `Center of High-Throughput Computing (CHTC) <http://chtc.cs.wisc.edu>`_ at the University of Wisconsin-Madison, for the support and guidance she provided throughout this project. We also thank Greg Thain for his comments on an earlier version of this documentation. 
+This research was performed using the compute resources and assistance of the UW-Madison Center For High Throughput Computing (CHTC) in the Department of Computer Sciences. The CHTC is supported by UW-Madison, the Advanced Computing Initiative, the Wisconsin Alumni Research Foundation, the Wisconsin Institutes for Discovery, and the National Science Foundation, and is an active member of the Open Science Grid, which is supported by the National Science Foundation and the U.S. Department of Energy's Office of Science.
 
 This work was supported by NIH research grant R01 DC006282 (MRI and CT Studies of the Developing Vocal Tract, Houri K. Vorperian, Principal Investigator) from the National Institute on Deafness and other Communication Disorders (NIDCD), and by a core grant P30 HD03352 and U54 HD090256 to the Waisman Center (Albee Messing, PI) for research support from the National Institute of Child Health and Human Development (NICHD).
 

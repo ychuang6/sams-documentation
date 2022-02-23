@@ -1,77 +1,37 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Overview &mdash; Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Semi-Automatic Mandible Segmentation (SAMS) Pipeline 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Installation" href="installation.html"/>
-        <link rel="prev" title="Welcome to the documentation for Semi-Automatic Mandible Segmentation (SAMS) Pipeline" href="index.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to the documentation for SAMS Pipeline" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
+        <div class="wy-side-nav-search" >
             <a href="index.html" class="icon icon-home"> Semi-Automatic Mandible Segmentation (SAMS) Pipeline
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 1.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +39,9 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dataset">Dataset</a></li>
@@ -108,161 +59,85 @@
 <li class="toctree-l1"><a class="reference internal" href="help.html">Contact</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Semi-Automatic Mandible Segmentation (SAMS) Pipeline</a>
-        
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Overview</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
 <p>This tutorial outlines the method developed by the <a class="reference external" href="http://www.waisman.wisc.edu/vocal">Vocal Tract Development Lab</a> (VTLab) to segment 3D mandible/jaw objects from head and neck multi-detector Computed Tomography (MDCT) images. This pipeline is designed to reduce the effort spent on manually segmenting 3D mandibles from raw CT images. Due to morphological variation of the mandibule across age and individuals, manual segmentation is a tedious and time consuming process, especially in research setting requiring large input of 3D mandible models, eg: developmental study on mandibular morphology. Therefore the VTLab developed this semi-automatic mandible segmentation (SAMS) pipeline to speed up the segmentation process, using a relatively easy setup. Other research groups facing similar issues may therefore adopt and adapt this pipeline for their use.</p>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline"></a></h2>
 <p>This semi-automated mandible segmentation (SAMS) pipeline uses image registration to compare an unknown case (referred to as a <em>test</em> <em>scan</em> in this documentation, see next figure for flowchart), with a set of previously-segmented CT images and their respective 3D mandible models (this dataset is referred to as <em>reference templates</em>). This process is then used to infer the location of the mandibular region on the <em>test scan</em>.</p>
 <p>This pipeline was developed with using mainly open-source software with the exception of <a class="reference external" href="http://analyzedirect.com">Analyze 12.0</a> (AnalyzeDirect, Overland Park, KS). The VTLab uses Analyze 12.0 (AnalyzeDirect, Overland Park, KS) for image preparation, editing and threshold determination. It can however be replaced with alternative software listed under the Installation section of this documentation.</p>
-<p><a class="reference external" href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL (FMRIB Software Library)</a> and <a class="reference external" href="http://sourceforge.net/projects/advants">Advanced Normalization Tools (ANTs)</a> are used for thresholding, trimming, and image registration. ITK-SNAP&#8217;s <a class="reference external" href="http://sourceforge.net/projects/c3d">Convert3D (C3D)</a> tool is used to convert output into binary form. <a class="reference external" href="http://afni.nimh.nih.gov/download">AFNI (Analysis of Functional NeuroImages)</a> is used for post-processing padding and file conversion as needed. <a class="reference external" href="http://www.mathworks.com">MATLAB</a> is used for inspection of the segmented mandibles. See Installation page for links, alternatives and additional information.</p>
+<p><a class="reference external" href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL (FMRIB Software Library)</a> and <a class="reference external" href="http://sourceforge.net/projects/advants">Advanced Normalization Tools (ANTs)</a> are used for thresholding, trimming, and image registration. ITK-SNAP’s <a class="reference external" href="http://sourceforge.net/projects/c3d">Convert3D (C3D)</a> tool is used to convert output into binary form. <a class="reference external" href="http://afni.nimh.nih.gov/download">AFNI (Analysis of Functional NeuroImages)</a> is used for post-processing padding and file conversion as needed. <a class="reference external" href="http://www.mathworks.com">MATLAB</a> is used for inspection of the segmented mandibles. See Installation page for links, alternatives and additional information.</p>
 <p>This pipeline consists of three major steps: 1) Pre-processing, 2) Automatic Segmentation and Compositing, and 3) Post-processing. This pipeline is semi-automated since step 1 and step 3 require manual intervention.</p>
-<p>In summary, an input CT series stored in Digital Imaging and Communications in Medicine (DICOM) format is first converted into Analyze-compatible 3D format for the user to determine a threshold in Hounsfield Unit (HU) that will remove all non-osseous tissues from the CT image (<em>test scan</em>). Then the user will determine the minimal enclosing box that contains the entire mandible in the <em>test scan</em>. The input <em>test scan</em> is then processed through the pipeline to be thresholded and cropped based on input user values. The pre-processed <em>test scan</em> is then sent to cluster computing to be registered against multiple <em>reference templates</em>. Once the mathematical transformation between the <em>test scan</em> and each references is established, the inverse transformation is applied to the known reference&#8217;s 3D mandible models (<em>template model</em>) to yield predictive mandible model for the <em>test scan</em>. These resulting &#8220;segmented 3D mandibles&#8221; are then compiled and averaged to produce a final model. This final model is then rendered in 3D for visual inspection. Mandibles with regions requiring correction/enhancement are converted back into Analyze format for manual editing in Analyze 12.0 (see Installation page for software options).</p>
-</div>
-<div class="section" id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<p>In summary, an input CT series stored in Digital Imaging and Communications in Medicine (DICOM) format is first converted into Analyze-compatible 3D format for the user to determine a threshold in Hounsfield Unit (HU) that will remove all non-osseous tissues from the CT image (<em>test scan</em>). Then the user will determine the minimal enclosing box that contains the entire mandible in the <em>test scan</em>. The input <em>test scan</em> is then processed through the pipeline to be thresholded and cropped based on input user values. The pre-processed <em>test scan</em> is then sent to cluster computing to be registered against multiple <em>reference templates</em>. Once the mathematical transformation between the <em>test scan</em> and each references is established, the inverse transformation is applied to the known reference’s 3D mandible models (<em>template model</em>) to yield predictive mandible model for the <em>test scan</em>. These resulting “segmented 3D mandibles” are then compiled and averaged to produce a final model. This final model is then rendered in 3D for visual inspection. Mandibles with regions requiring correction/enhancement are converted back into Analyze format for manual editing in Analyze 12.0 (see Installation page for software options).</p>
+</section>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline"></a></h2>
 <p>The dataset and the <em>reference templates</em> used to design this pipeline are from our VTLab imaging database which was collected retrospectively following <a class="reference external" href="http://www.irb.wisc.edu">University of Wisconsin-Madison Institutional Review Board (IRB)</a> approval (IRB number: 2011-0036 and 2016-1052).</p>
-</div>
-<div class="section" id="flowchart">
-<h2>Flowchart<a class="headerlink" href="#flowchart" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id1">
+</section>
+<section id="flowchart">
+<h2>Flowchart<a class="headerlink" href="#flowchart" title="Permalink to this headline"></a></h2>
+<figure class="align-default" id="id1">
 <img alt="_images/samsflowchartmain.jpg" src="_images/samsflowchartmain.jpg" />
-<p class="caption"><span class="caption-text">Flowchart of the SAMS Pipeline</span></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Flowchart of the SAMS Pipeline</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
-           </div>
-           <div class="articleComments">
-            
            </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral" title="Welcome to the documentation for Semi-Automatic Mandible Segmentation (SAMS) Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the documentation for SAMS Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, Vocal Tract Development Laboratory.
-
-    </p>
+    <p>&#169; Copyright 2017, Vocal Tract Development Laboratory.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

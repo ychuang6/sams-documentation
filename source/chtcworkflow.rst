@@ -1,7 +1,7 @@
 ```````````````````````````
 Cluster Computing: Workflow
 ```````````````````````````
-The explanation and examples provided in this section are HTCondor-specific terminologies and components, consisting extensive excerpts from the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_. The description provided here are brief snippets of their actual and potential functions. Refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanations. All HTCondor functions and commands displayed here are work of the `Center for High Throughput Computing <https://chtc.cs.wisc.edu>`_, Computer Sciences Department, University of Wisconsins-Madison, Madison, WI. 
+The explanation and examples provided in this section are HTCondor-specific terminologies and components, consisting extensive excerpts from the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_. The description provided here are brief snippets of their actual and potential functions. Refer to the `HTCondor Manual <https://research.cs.wisc.edu/htcondor/manual>`_ for detailed explanations. All HTCondor functions and commands displayed here are work of the `Center for High Throughput Computing <https://chtc.cs.wisc.edu>`_, Computer Sciences Department, University of Wisconsins-Madison, Madison, WI.
 
 -----------
 Terminology
@@ -76,10 +76,8 @@ A simple DAG spliced input file is ::
 
 
 **Gluster** :
-Gluster is a file share maintained by CHTC, and used for files or software that are too large for HTCondor file transfer. See `<http://chtc.cs.wisc.edu/file-avail-gluster.shtml>`_ for explanation.
-
-
-*In progress*
+Gluster is a file share maintained by CHTC, and used for files or software that are too large for HTCondor file transfer. See `<http://chtc.cs.wisc.edu/file-avail-gluster.shtml>`_ for explanation. Note: This is an attribute unique only to CHTC and not generally available.
+*As of September 25, 2017, Gluster is no longer used for the methodology described in this protocol.*
 
 
 ---------------
@@ -174,6 +172,9 @@ The following are samples of the two submit files. Users should replace variable
         queue
 
 
+.. note:: The line *requirements = (HasGluster == true)* is a CHTC-only attribute and not generally available. 
+
+
 Executing Scripts
 ~~~~~~~~~~~~~~~~~
 As shown in the flowchart above, there are two executing scripts for the Registration step and Compositing step respectively. These two steps are linked through a PARENT-CHILD dependency listed in the submit DAG file.
@@ -200,7 +201,7 @@ Scripts used are ::
         mandible.wrapper.sh
         mandible.registration.sh
 
-The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation <http://sams.readthedocs.io/en/latest/pipelineworkflow.html#automatic-segmentation>`_ section.
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Automatic Segmentation <http://samsdoc.readthedocs.io/en/latest/pipeline.html#automatic-segmentation>`_ section.
 
 
 Compositing
@@ -212,12 +213,13 @@ Scripts used are ::
         weighted-averaging.sh
         mandible.unpack.sh
 
-The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://sams.readthedocs.io/en/latest/pipelineworkflow.html#compositing>`_ section.
+The executing script here will consist of commands specified in `Basic Workflow/Automatic Segmentation and Compositing/Compositing <http://samsdoc.readthedocs.io/en/latest/pipeline.html#compositing>`_ section.
 
 
 *Samples scripts will be provided here in late July*
 
 
-.. _Manual: http://research.cs.wisc.edu/htcondor/
+.. _Manual: https://research.cs.wisc.edu/htcondor/manual
+
 
 

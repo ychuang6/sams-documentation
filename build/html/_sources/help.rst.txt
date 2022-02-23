@@ -9,7 +9,7 @@ Contact
 | Madison, WI-53705
 
 
-Direct questions to vocaltractlab@gmail.com
+Direct questions to vtlab@waisman.wisc.edu
 
 Help is available throughout the duration of the grant that made this work possible.
 
