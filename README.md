@@ -1,6 +1,7 @@
 # Semi-Automatic Mandible Segmentation (SAMS) Pipeline
 
-This pipeline is a registration-based pipeline designed to process large-scale head and neck Computed Tomography (CT) studies for extraction of 3D binary models of human jaw (mandibles).
+This [readthedoc](https://sams.readthedocs.io) repository is a draft for the active documentation associated with the Vocal Tract Development Lab's 2018 publication.
+The SAMS pipeline is a registration-based pipeline designed to process large-scale head and neck Computed Tomography (CT) studies for extraction of 3D binary models of human jaw (mandibles).
 
 ## Publication
 
