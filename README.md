@@ -13,3 +13,13 @@ See active documentation page at: http://samsdoc.readthedocs.io/
 
 Publication URL at PubMed: https://www.ncbi.nlm.nih.gov/pubmed/28937489
 
+## Illustrations
+
+Effect of adjusting threshold values on 3D CT rendering for best visualization of boney structure:
+
+![raw_threshold](source/images/RawThreshold.jpg)
+
+Composite and normalized 3D model of all segmented mandibles from Automatic Segmentation:
+
+![matlabrender](source/images/M227normthres.jpg)
+
